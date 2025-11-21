@@ -19,6 +19,11 @@ void screenAddWidget() {
     GtkWidget *gridParentWidgets = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowAddWidget),gridParentWidgets);
 
+    //Init of entryWidgetName
+    GtkWidget *entryWidgetName = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryWidgetName,0,0,8,1);
+
+
 
 }
 
