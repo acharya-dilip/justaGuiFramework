@@ -37,6 +37,12 @@ void screenAddWidget() {
     GtkWidget *dropdownWidgets = gtk_drop_down_new(G_LIST_MODEL (listWidgets), NULL);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),dropdownWidgets,8,0,2,1);
 
+    //Init of labelPlacement
+    GtkWidget *labelPlacement = gtk_label_new("Grid Placement:");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelPlacement,0,2,10,1);
+    //Init of labelGridPlacementRow
+    //Init of entryGridPlacementRow
+
 
 
 }
