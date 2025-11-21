@@ -8,6 +8,10 @@ static void activate(GtkApplication *app,gpointer user_data) {
     gtk_window_set_default_size(GTK_WINDOW(windowMain),400,500);
     gtk_window_set_title(GTK_WINDOW(windowMain),"JustaGuiFramework");
     gtk_window_present(GTK_WINDOW(windowMain));
+
+    //init of headerMain
+    GtkWidget *headerMain = gtk_header_bar_new();
+    gtk_window_set_titlebar(GTK_WINDOW(windowMain),headerMain);
 }
 
 int main(int argc, char **argv) {
