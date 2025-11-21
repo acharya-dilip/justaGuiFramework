@@ -18,6 +18,11 @@ void screenAddWidget() {
     //Init of gridParentWidgets
     GtkWidget *gridParentWidgets = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowAddWidget),gridParentWidgets);
+    //Margins & Paddings
+    gtk_widget_set_margin_top(gridParentWidgets,10);
+    gtk_widget_set_margin_bottom(gridParentWidgets,10);
+    gtk_widget_set_margin_end(gridParentWidgets,10);
+    gtk_widget_set_margin_start(gridParentWidgets,10);
 
     //Init of entryWidgetName
     GtkWidget *entryWidgetName = gtk_entry_new();
