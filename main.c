@@ -27,7 +27,8 @@ void screenAddWidget() {
     //Init of entryWidgetName
     GtkWidget *entryWidgetName = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryWidgetName,0,0,8,1);
-
+    //Margins & Paddings
+    gtk_widget_set_size_request(entryWidgetName,210,-1);
     //Init of dropdownWidgets
     const char *widgetList[]={"Button","Entry",NULL};
     GtkStringList *listWidgets = gtk_string_list_new(widgetList);
