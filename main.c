@@ -9,6 +9,11 @@ void screenAddWidget();
 
 void screenAddWidget() {
 
+    //Init of windowAddWidget
+    GtkWidget *windowAddWidget = gtk_window_new();
+    gtk_window_set_default_size(GTK_WINDOW(windowAddWidget),300,300);
+    gtk_window_set_title(GTK_WINDOW(windowAddWidget),"Add Widget");
+    gtk_window_present(GTK_WINDOW(windowAddWidget));
 
 }
 
