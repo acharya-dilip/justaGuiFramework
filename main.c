@@ -12,6 +12,10 @@ static void activate(GtkApplication *app,gpointer user_data) {
     //init of headerMain
     GtkWidget *headerMain = gtk_header_bar_new();
     gtk_window_set_titlebar(GTK_WINDOW(windowMain),headerMain);
+
+    //init of button add widget
+    GtkWidget *buttonAddWidget = gtk_button_new_with_label("➕");
+    gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonAddWidget);
 }
 
 int main(int argc, char **argv) {
