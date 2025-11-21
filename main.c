@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 
+void screenAddWidget();
+
+
+
+
+
+void screenAddWidget() {
+
+
+}
+
 static void activate(GtkApplication *app,gpointer user_data) {
 
     //init of windowMain
@@ -20,10 +31,6 @@ static void activate(GtkApplication *app,gpointer user_data) {
     //init buttonChildWindow
     GtkWidget *buttonChildWindow = gtk_button_new_with_label("🧭");
     gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonChildWindow);
-
-
-
-
 
 }
 
