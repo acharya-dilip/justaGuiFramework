@@ -37,6 +37,7 @@ static void activate(GtkApplication *app,gpointer user_data) {
     //init of button add widget
     GtkWidget *buttonAddWidget = gtk_button_new_with_label("➕");
     gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonAddWidget);
+    g_signal_connect(buttonAddWidget,"clicked",G_CALLBACK(screenAddWidget),NULL);
 
     //init buttonChildWindow
     GtkWidget *buttonChildWindow = gtk_button_new_with_label("🧭");
