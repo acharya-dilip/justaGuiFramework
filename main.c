@@ -3,7 +3,7 @@
 
 struct widgets{
     int isOccupied;
-    char widgetName[30];
+    GtkWidget *widget;
     char labelWidget[30];
     struct grid {
         int row;
