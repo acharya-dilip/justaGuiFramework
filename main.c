@@ -41,17 +41,30 @@ void screenAddWidget() {
     GtkWidget *labelPlacement = gtk_label_new("Grid Placement:");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelPlacement,0,2,6,1);
     gtk_widget_set_halign(labelPlacement,GTK_ALIGN_START);
-    gtk_widget_set_margin_start(labelPlacement,4);
-    gtk_widget_set_margin_top(labelPlacement,4);
+    gtk_widget_set_margin_start(labelPlacement,6);
+    gtk_widget_set_margin_top(labelPlacement,6);
+    gtk_widget_set_margin_bottom(labelPlacement,10);
 
     //Init of labelGridPlacementRow
     GtkWidget *labelGridPlacementRow = gtk_label_new("Row:");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementRow,0,3,1,1);
     gtk_widget_set_margin_top(labelGridPlacementRow,4);
 
+
     //Init of entryGridPlacementRow
     GtkWidget *entryGridPlacementRow = gtk_entry_new();
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementRow,1,3,1,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementRow,1,3,5,1);
+
+    //Init of labelGridPlacementColumn
+    GtkWidget *labelGridPlacementColumn = gtk_label_new("Col:");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementColumn,6,3,1,1);
+    gtk_widget_set_margin_top(labelGridPlacementColumn,4);
+
+    //Init of entryGridPlacementColumn
+    GtkWidget *entryGridPlacementColumn = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementColumn,7,3,3,1);
+
+
 
 
 }
