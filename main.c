@@ -1,6 +1,20 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 
+struct widgets{
+    int isOccupied;
+    char widgetName[30];
+    char labelWidget[30];
+    struct grid {
+        int row;
+        int col;
+    }grid;
+    struct widgetType {
+        int isButton;
+        int isEntry;
+    }type;
+}widget[100];
+
 void screenAddWidget();
 
 
