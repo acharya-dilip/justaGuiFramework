@@ -39,7 +39,11 @@ void screenAddWidget() {
 
     //Init of labelPlacement
     GtkWidget *labelPlacement = gtk_label_new("Grid Placement:");
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelPlacement,0,2,10,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelPlacement,0,2,6,1);
+    gtk_widget_set_halign(labelPlacement,GTK_ALIGN_START);
+    gtk_widget_set_margin_start(labelPlacement,4);
+    gtk_widget_set_margin_top(labelPlacement,4);
+
     //Init of labelGridPlacementRow
     //Init of entryGridPlacementRow
 
