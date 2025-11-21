@@ -4,7 +4,6 @@
 struct widgets{
     int isOccupied;
     GtkWidget *widget;
-    char labelWidget[30];
     struct grid {
         int row;
         int col;
@@ -13,6 +12,16 @@ struct widgets{
         int isButton;
         int isEntry;
     }type;
+    struct button {
+        char label[100];
+    }button;
+    struct entry {
+        int hasPlaceholderText;
+        char placeholderText[100];
+        int hasPreText;
+        char preText[100];
+        int isEditable;
+    }entry;
 }widget[100];
 
 void screenAddWidget();
