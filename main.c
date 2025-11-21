@@ -15,6 +15,11 @@ void screenAddWidget() {
     gtk_window_set_title(GTK_WINDOW(windowAddWidget),"Add Widget");
     gtk_window_present(GTK_WINDOW(windowAddWidget));
 
+    //Init of gridParentWidgets
+    GtkWidget *gridParentWidgets = gtk_grid_new();
+    gtk_window_set_child(GTK_WINDOW(windowAddWidget),gridParentWidgets);
+
+
 }
 
 static void activate(GtkApplication *app,gpointer user_data) {
