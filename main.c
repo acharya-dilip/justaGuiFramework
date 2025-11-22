@@ -88,9 +88,11 @@ void screenAddWidget() {
 
     //Init of entrylabel
     GtkWidget *entryLabel = gtk_entry_new();
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,7,4,5,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,4,5,1);
 
-
+    //Init of buttonAddWidget
+    GtkWidget *buttonAddWidget = gtk_button_new_with_label("Add Widget");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonAddWidget,0,20,10,1);
 
 
 
