@@ -72,7 +72,6 @@ void screenAddWidget() {
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementRow,0,3,1,1);
     gtk_widget_set_margin_top(labelGridPlacementRow,4);
 
-
     //Init of entryGridPlacementRow
     GtkWidget *entryGridPlacementRow = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementRow,1,3,5,1);
@@ -89,6 +88,8 @@ void screenAddWidget() {
     //Init of entrylabel
     GtkWidget *entryLabel = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,4,5,1);
+    gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label");
+
 
     //Init of buttonAddWidget
     GtkWidget *buttonAddWidget = gtk_button_new_with_label("Add Widget");
