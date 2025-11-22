@@ -4,6 +4,9 @@
 struct widgets{
     int isOccupied;
     GtkWidget *widget;
+    struct label{
+        char label[100];
+    }label;
     struct grid {
         int row;
         int col;
@@ -25,10 +28,6 @@ struct widgets{
 }widget[100];
 
 void screenAddWidget();
-
-
-
-
 
 void screenAddWidget() {
 
@@ -86,6 +85,11 @@ void screenAddWidget() {
     //Init of entryGridPlacementColumn
     GtkWidget *entryGridPlacementColumn = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementColumn,7,3,3,1);
+
+    //Init of entrylabel
+    GtkWidget *entryLabel = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,7,4,5,1);
+
 
 
 
