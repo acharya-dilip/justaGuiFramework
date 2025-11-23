@@ -248,6 +248,9 @@ void  registerWidget() {
             strcpy(widget[widgetCount].entry.placeholderText,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
             widget[widgetCount].entry.hasPlaceHolderText = 1;
         }
+    }else if(strcmp(widgetType,"T.View")==0){
+        strcpy(widget[widgetCount].label.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        widget[widgetCount].type.isTextView = 1;
     }
 
         widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
