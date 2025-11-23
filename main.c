@@ -84,6 +84,15 @@ void screenWindowChild() {
     //Init of gridParent
     GtkWidget *gridParent = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowChild),gridParent);
+    //MArgins & Paddings
+    gtk_widget_set_margin_start(gridParent,10);
+    gtk_widget_set_margin_end(gridParent,10);
+    gtk_widget_set_margin_top(gridParent,10);
+    gtk_widget_set_margin_bottom(gridParent,10);
+    gtk_widget_set_halign(gridParent,GTK_ALIGN_CENTER);
+    gtk_widget_set_valign(gridParent,GTK_ALIGN_CENTER);
+
+
     //Declares the widgets with their appropiriate widgetType
     declareWidgets();
     for (int i=0;i<widgetCount;i++) {
