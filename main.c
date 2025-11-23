@@ -155,22 +155,22 @@ void screenAddWidget() {
 
     //Init of labelMinHeight
     GtkWidget *labelMinHeight = gtk_label_new("Height:");
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMinHeight,0,4,1,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMinHeight,0,6,1,1);
     gtk_widget_set_margin_top(labelMinHeight,4);
 
     //Init of spinbuttonMinHeight
     spinbuttonMinHeight = gtk_spin_button_new(defaultAdjustmentMinHeight,1,0);
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonMinHeight,1,4,5,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonMinHeight,1,6,5,1);
     gtk_widget_set_margin_top(spinbuttonMinHeight,4);
 
     //Init of labelMinWidth
     GtkWidget *labelMinWidth = gtk_label_new("Width:");
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMinWidth,6,4,1,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMinWidth,6,6,1,1);
     gtk_widget_set_margin_top(labelMinWidth,4);
 
     //Init of spinbuttonMinWidth
     spinbuttonMinWidth = gtk_spin_button_new(defaultAdjustmentMinWidth ,1,0);
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonMinWidth,7,4,3,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonMinWidth,7,6,3,1);
     gtk_widget_set_margin_top(spinbuttonMinWidth,4);
 
     //Init of buttonAddWidget
