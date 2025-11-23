@@ -139,7 +139,7 @@ void screenAddWidget() {
     //Init of entrylabel
     entryLabel = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,1,10,1);
-    gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label");
+    gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label/Placeholder Text");
     //Margins & Paddings
     gtk_widget_set_margin_top(entryLabel,10);
 
