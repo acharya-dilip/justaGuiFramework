@@ -417,7 +417,6 @@ void  registerWidget() {
         gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,12,10,1);
         g_signal_connect(buttonExportGui,"clicked",G_CALLBACK(exportGui),NULL);
         gtk_widget_set_size_request(buttonExportGui,400,-1);
-
     }
 
     void declareWidgetLabels() {
@@ -468,11 +467,13 @@ void  registerWidget() {
     }
 
     void exportGui() {
+
         //Writes the widget data in binary for other program to read
         FILE *file1 = fopen("ExportedGui/widget.data","w");
         fwrite(&widgetCount,sizeof(widgetCount),1,file1);
         fwrite(&widget,sizeof(widget),widgetCount,file1);
         fclose(file1);
+
         //Writes the data in a documentation style for a hooman to read
         FILE *file2 = fopen("ExportedGui/WidgetDocumentation.txt","w");
         fprintf(file2,"S.N. \t Widget Name \t Widget Type \t Row \t Row Span \t Column \t Column Span \t Min Width \t Min Height \t Margin Top \t Margin Bottom \t Margin Start \t Margin End \n");
@@ -497,12 +498,14 @@ void  registerWidget() {
     }
     //Declares the widget in the struct according to the information and configurations provided
     void declareWidgets() {
+
         //Sets the widgets as null
         int i=0;
         while (widget[i].widget!=NULL) {
             widget[i].widget=NULL;
             i++;
         }
+        //This Part   actualy does the comparing and declaring
         for (int j = 0; j<widgetCount;j++) {
             if (widget[j].type.isButton==1) {
                 widget[j].widget = gtk_button_new_with_label(widget[j].button.label);
@@ -510,12 +513,13 @@ void  registerWidget() {
                 widget[j].widget = gtk_label_new(widget[j].label.label);
             }else if (widget[j].type.isTextView==1){
             widget[j].widget = gtk_text_view_new();
-        }else if (widget[j].type.isEntry==1) {
+            }else if (widget[j].type.isEntry==1) {
                 widget[j].widget = gtk_entry_new();
-                if (widget[j].entry.hasPlaceHolderText==1) {
+                    if (widget[j].entry.hasPlaceHolderText==1) {
                     gtk_entry_set_placeholder_text(GTK_ENTRY(widget[j].widget),widget[j].entry.placeholderText);
                 }
             }
+            //Registering the Margins values
             gtk_widget_set_margin_top(widget[j].widget,widget[j].margin.top);
             gtk_widget_set_margin_bottom(widget[j].widget,widget[j].margin.bottom);
             gtk_widget_set_margin_start(widget[j].widget,widget[j].margin.start);
