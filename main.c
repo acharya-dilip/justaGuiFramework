@@ -277,11 +277,8 @@ void  registerWidget(){
     widgetCount++;
     gtk_window_destroy(GTK_WINDOW(windowAddWidget));
     declareWidgetLabels();
-    screenWindowChild();
-
-
-
 }
+
 //Globalization of variables
 GtkWidget *scrolledWindowWidgets;
 GtkWidget *gridWidgets;
@@ -418,9 +415,9 @@ void declareWidgets() {
     }
     for (int j = 0; j<widgetCount;j++) {
         if (widget[j].type.isButton==1) {
-            widget[widgetCount].widget = gtk_button_new_with_label(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+            widget[widgetCount].widget = gtk_button_new_with_label(widget[i].button.label);
         }else if (widget[j].type.isLabel==1){
-            widget[widgetCount].widget = gtk_label_new(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+            widget[widgetCount].widget = gtk_label_new(widget[i].label.label);
         }else if (widget[j].type.isEntry==1) {
         widget[widgetCount].widget = gtk_entry_new();
         }
