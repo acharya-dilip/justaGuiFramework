@@ -240,12 +240,14 @@ static void activate(GtkApplication *app,gpointer user_data) {
     GtkWidget *gridParent = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowMain),gridParent);
 
-    //Init of palceholderLabel
+    //Init of scrolledwindowWidgets
+    GtkWidget *scrolledwindowWidgets = gtk_scrolled_window_new();
+    gtk_grid_attach(GTK_GRID(gridParent),scrolledwindowWidgets,0,0,10,10);
 
 
     //Init of buttonExportGui
     GtkWidget *buttonExportGui = gtk_button_new_with_label("Export");
-    gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,10,10,1);
+    gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,12,10,1);
     gtk_widget_set_size_request(buttonExportGui,400,-1);
 
 }
