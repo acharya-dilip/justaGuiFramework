@@ -382,6 +382,7 @@ void deleteWidget(GtkButton *button, gpointer user_data){
         widget[j] = widget[j+1];
     }
     declareWidgetLabels();
+    widgetCount--;
 }
 
 void exportGui() {
