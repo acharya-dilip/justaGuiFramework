@@ -243,9 +243,13 @@ static void activate(GtkApplication *app,gpointer user_data) {
     GtkWidget *gridParent = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowMain),gridParent);
 
+    //init of labelWidgets
+    GtkWidget *labelWidgets = gtk_label_new("Widgets");
+    gtk_grid_attach(GTK_GRID(gridParent),labelWidgets,0,0,10,1);
+
     //Init of scrolledWindowWidgets
     scrolledWindowWidgets = gtk_scrolled_window_new();
-    gtk_grid_attach(GTK_GRID(gridParent),scrolledWindowWidgets,0,0,10,10);
+    gtk_grid_attach(GTK_GRID(gridParent),scrolledWindowWidgets,0,1,10,10);
     gtk_widget_set_size_request(scrolledWindowWidgets,400,-1);
 
     //Init of gridScrolledWindow
