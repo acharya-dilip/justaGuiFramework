@@ -36,6 +36,7 @@ struct widgets{
 
 void screenAddWidget();
 void registerWidget();
+void declareWidgetLabels();
 
 //Glovbized Varuables
 GtkWidget *windowAddWidget;
@@ -257,7 +258,7 @@ static void activate(GtkApplication *app,gpointer user_data) {
     //Init of scrolledWindowWidgets
     scrolledWindowWidgets = gtk_scrolled_window_new();
     gtk_grid_attach(GTK_GRID(gridParent),scrolledWindowWidgets,0,1,10,10);
-    gtk_widget_set_size_request(scrolledWindowWidgets,400,400);
+    gtk_widget_set_size_request(scrolledWindowWidgets,380,400);
 
     //Init of gridScrolledWindow
     gridWidgets = gtk_grid_new();
@@ -268,6 +269,10 @@ static void activate(GtkApplication *app,gpointer user_data) {
     GtkWidget *buttonExportGui = gtk_button_new_with_label("Export");
     gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,12,10,1);
     gtk_widget_set_size_request(buttonExportGui,400,-1);
+
+}
+
+void declareWidgetLabels() {
 
 }
 
