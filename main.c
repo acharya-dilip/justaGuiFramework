@@ -249,7 +249,6 @@ void  registerWidget() {
             widget[widgetCount].entry.hasPlaceHolderText = 1;
         }
     }else if(strcmp(widgetType,"T.View")==0){
-        strcpy(widget[widgetCount].label.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
         widget[widgetCount].type.isTextView = 1;
     }
 
@@ -422,9 +421,9 @@ void  registerWidget() {
         }
         for (int j = 0; j<widgetCount;j++) {
             if (widget[j].type.isButton==1) {
-                widget[j].widget = gtk_button_new_with_label(widget[i].button.label);
+                widget[j].widget = gtk_button_new_with_label(widget[j].button.label);
             }else if (widget[j].type.isLabel==1){
-                widget[j].widget = gtk_label_new(widget[i].label.label);
+                widget[j].widget = gtk_label_new(widget[j].label.label);
             }else if (widget[j].type.isTextView==1){
             widget[j].widget = gtk_text_view_new();
         }else if (widget[j].type.isEntry==1) {
