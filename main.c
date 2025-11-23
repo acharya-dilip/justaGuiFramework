@@ -289,6 +289,11 @@ void declareWidgetLabels() {
         widget[i].boxWidgetInfo = gtk_center_box_new();
         gtk_orientable_set_orientation(GTK_ORIENTABLE(widget[i].boxWidgetInfo),GTK_ORIENTATION_HORIZONTAL);
         gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].boxWidgetInfo,0,i,1,1);
+        gtk_widget_set_size_request(widget[i].boxWidgetInfo,380,-1);
+        //init of labelWidgetName
+        widget[i].labelWidgetName = gtk_label_new(widget[i].widgetName);
+        gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetName);
+        gtk_widget_set_halign(widget[i].labelWidgetName,GTK_ALIGN_START);
     }
 }
 
