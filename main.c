@@ -273,7 +273,11 @@ static void activate(GtkApplication *app,gpointer user_data) {
 }
 
 void declareWidgetLabels() {
-
+  //Removes the old widgets
+    GtkWidget *child;
+    while ((child = gtk_widget_get_first_child(GTK_WIDGET(gridWidgets))) != NULL) {
+        gtk_grid_remove(GTK_GRID(gridWidgets), child);
+    }
 }
 
 int main(int argc, char **argv) {
