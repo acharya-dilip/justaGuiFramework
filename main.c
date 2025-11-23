@@ -66,6 +66,7 @@ GtkWidget *spinbuttonGridPlacementRowSpan;
 GtkWidget *spinbuttonGridPlacementColumnSpan;
 GtkWidget *spinbuttonMinHeight;
 GtkWidget *spinbuttonMinWidth;
+GtkWidget *spinbuttonMarginStart;
 GtkWidget *entryLabel;
 const char *widgetList[]={"Button","Label","Entry","T.View",NULL};
 GtkStringList *listWidgets;
@@ -76,7 +77,7 @@ GtkAdjustment *defaultAdjustmentRowSpan;
 GtkAdjustment *defaultAdjustmentColumnSpan;
 GtkAdjustment *defaultAdjustmentMinHeight;
 GtkAdjustment *defaultAdjustmentMinWidth;
-
+GtkAdjustment *defaultAdjustmentMarginStart;
 //Globalised variables
 GtkWidget *windowChild;
 void screenWindowChild() {
@@ -122,7 +123,7 @@ void screenAddWidget() {
     defaultAdjustmentColumnSpan = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
     defaultAdjustmentMinHeight = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
     defaultAdjustmentMinWidth = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-
+    defaultAdjustmentMarginStart = = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
     //Init of windowAddWidget
     windowAddWidget = gtk_window_new();
     gtk_window_set_default_size(GTK_WINDOW(windowAddWidget),300,300);
@@ -246,6 +247,11 @@ void screenAddWidget() {
     GtkWidget *labelMarginStart = gtk_label_new("Height:");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMarginStart,0,8,1,1);
     gtk_widget_set_margin_top(labelMarginStart,4);
+
+    //Init of spinbuttonMarginStart
+    spinbuttonMarginStart = gtk_spin_button_new(defaultAdjustmentMarginStart,1,0);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonMarginStart,1,6,5,1);
+    gtk_widget_set_margin_top(spinbuttonMarginStart,4);
 
 
 
