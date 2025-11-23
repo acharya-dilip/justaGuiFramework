@@ -284,6 +284,12 @@ void declareWidgetLabels() {
     while ((child = gtk_widget_get_first_child(GTK_WIDGET(gridWidgets))) != NULL) {
         gtk_grid_remove(GTK_GRID(gridWidgets), child);
     }
+    for (int i=0; i < widgetCount; i++) {
+        //Init of boxAlarm
+        widget[i].boxWidgetInfo = gtk_center_box_new();
+        gtk_orientable_set_orientation(GTK_ORIENTABLE(widget[i].boxWidgetInfo),GTK_ORIENTATION_HORIZONTAL);
+        gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].boxWidgetInfo,0,i,1,1);
+    }
 }
 
 int main(int argc, char **argv) {
