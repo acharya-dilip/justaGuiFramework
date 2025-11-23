@@ -40,6 +40,8 @@ GtkWidget *spinbuttonGridPlacementRow;
 GtkWidget *spinbuttonGridPlacementColumn;
 GtkWidget *spinbuttonGridPlacementRowSpan;
 GtkWidget *spinbuttonGridPlacementColumnSpan;
+GtkWidget *spinbuttonMinHeight;
+GtkWidget *spinbuttonMinWidth;
 GtkWidget *entryLabel;
 const char *widgetList[]={"Button","Entry",NULL};
 GtkStringList *listWidgets;
@@ -48,6 +50,8 @@ GtkAdjustment *defaultAdjustmentRow;
 GtkAdjustment *defaultAdjustmentColumn;
 GtkAdjustment *defaultAdjustmentRowSpan;
 GtkAdjustment *defaultAdjustmentColumnSpan;
+GtkAdjustment *defaultAdjustmentMinHeight;
+GtkAdjustment *defaultAdjustmentMinWidth;
 
 
 void screenAddWidget() {
@@ -55,6 +59,9 @@ void screenAddWidget() {
     defaultAdjustmentColumn = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
     defaultAdjustmentRowSpan = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
     defaultAdjustmentColumnSpan = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentMinHeight = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentMinWidth = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
+
     //Init of windowAddWidget
     GtkWidget *windowAddWidget = gtk_window_new();
     gtk_window_set_default_size(GTK_WINDOW(windowAddWidget),300,300);
@@ -140,7 +147,7 @@ void screenAddWidget() {
 
     //Init of labelMinSize
     GtkWidget *labelMinSize = gtk_label_new("Minimum Size:");
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMinSize,0,2,6,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMinSize,0,5,6,1);
     gtk_widget_set_halign(labelMinSize,GTK_ALIGN_START);
     gtk_widget_set_margin_start(labelMinSize,6);
     gtk_widget_set_margin_top(labelMinSize,6);
