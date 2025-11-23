@@ -227,15 +227,15 @@ void screenAddWidget() {
 
 
 }
-void  registerWidget(){
+void  registerWidget() {
     //Function to hold all the logic for when the buttonRegister
     widget[widgetCount].isOccupied = 1;
     strcpy(widget[widgetCount].widgetName,gtk_editable_get_text(GTK_EDITABLE(entryWidgetName)));
     const char *widgetType = gtk_string_list_get_string(GTK_STRING_LIST(listWidgets), gtk_drop_down_get_selected(GTK_DROP_DOWN(dropdownWidgets)));
     strcpy(widget[widgetCount].type.widgetTypeName,widgetType);
     if(strcmp(widget[widgetCount].type.widgetTypeName,"Button")==0){
-    strcpy(widget[widgetCount].button.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
-    widget[widgetCount].type.isButton = 1;
+        strcpy(widget[widgetCount].button.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        widget[widgetCount].type.isButton = 1;
     }
     else if(strcmp(widgetType,"Label")==0){
         strcpy(widget[widgetCount].button.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
@@ -244,196 +244,200 @@ void  registerWidget(){
     else if(strcmp(widgetType,"Entry")==0) {
         widget[widgetCount].type.isEntry = 1;
         if (strcmp(gtk_editable_get_text(GTK_EDITABLE(entryLabel)),"")!=0){
-        strcpy(widget[widgetCount].entry.placeholderText,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+            strcpy(widget[widgetCount].entry.placeholderText,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
             widget[widgetCount].entry.hasPlaceHolderText = 1;
-    }
-
-    widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
-    widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
-
-    widget[widgetCount].grid.rowSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRowSpan));
-    widget[widgetCount].grid.colSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumnSpan));
-    //Checks if colspan and rowspan is 0 or less and defaults the value to -1 if that's the case
-    if (widget[widgetCount].grid.rowSpan<=0 && widget[widgetCount].grid.colSpan<=0) {
-        widget[widgetCount].grid.rowSpan=1;
-        widget[widgetCount].grid.colSpan=1;
-    }else if (widget[widgetCount].grid.rowSpan<=0) {
-        widget[widgetCount].grid.rowSpan=1;
-    }else if (widget[widgetCount].grid.colSpan<=0) {
-        widget[widgetCount].grid.colSpan=1;
-    }
-
-    widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
-    widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
-    //checks if min height or width is 0 or less if so defaults it to -1
-    if (widget[widgetCount].minSize.height<=0 && widget[widgetCount].minSize.width<=0) {
-        widget[widgetCount].minSize.height=-1;
-        widget[widgetCount].minSize.width=-1;
-    }else if (widget[widgetCount].minSize.height<=0) {
-        widget[widgetCount].minSize.height=-1;
-    }else if (widget[widgetCount].minSize.width<=0) {
-        widget[widgetCount].minSize.width=-1;
-    }
-
-
-    widgetCount++;
-    gtk_window_destroy(GTK_WINDOW(windowAddWidget));
-    declareWidgetLabels();
-}
-
-//Globalization of variables
-GtkWidget *scrolledWindowWidgets;
-GtkWidget *gridWidgets;
-static void activate(GtkApplication *app,gpointer user_data) {
-
-    //init of windowMain
-    GtkWidget *windowMain = gtk_application_window_new(app);
-    gtk_window_set_default_size(GTK_WINDOW(windowMain),400,500);
-    gtk_window_set_title(GTK_WINDOW(windowMain),"JustaGuiFramework");
-    gtk_window_present(GTK_WINDOW(windowMain));
-
-    //init of headerMain
-    GtkWidget *headerMain = gtk_header_bar_new();
-    gtk_window_set_titlebar(GTK_WINDOW(windowMain),headerMain);
-
-    //init of button add widget
-    GtkWidget *buttonAddWidget = gtk_button_new_with_label("➕");
-    gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonAddWidget);
-    g_signal_connect(buttonAddWidget,"clicked",G_CALLBACK(screenAddWidget),NULL);
-
-    //init buttonChildWindow
-    GtkWidget *buttonChildWindow = gtk_button_new_with_label("🧭");
-    gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonChildWindow);
-    g_signal_connect(buttonChildWindow,"clicked",G_CALLBACK(screenWindowChild),NULL);
-
-    //init of gridParent
-    GtkWidget *gridParent = gtk_grid_new();
-    gtk_window_set_child(GTK_WINDOW(windowMain),gridParent);
-    //Margins & Paddings
-    gtk_widget_set_margin_start(gridParent,10);
-    gtk_widget_set_margin_end(gridParent,10);
-    gtk_widget_set_margin_top(gridParent,10);
-    gtk_widget_set_margin_bottom(gridParent,10);
-    gtk_widget_set_halign(gridParent,GTK_ALIGN_CENTER);
-    gtk_widget_set_valign(gridParent,GTK_ALIGN_CENTER);
-
-    //init of labelWidgets
-    GtkWidget *labelWidgets = gtk_label_new("Widgets");
-    gtk_grid_attach(GTK_GRID(gridParent),labelWidgets,0,0,10,1);
-
-    //Init of scrolledWindowWidgets
-    scrolledWindowWidgets = gtk_scrolled_window_new();
-    gtk_grid_attach(GTK_GRID(gridParent),scrolledWindowWidgets,0,1,10,10);
-    gtk_widget_set_size_request(scrolledWindowWidgets,380,400);
-
-    //Init of gridScrolledWindow
-    gridWidgets = gtk_grid_new();
-    gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scrolledWindowWidgets),gridWidgets);
-
-
-    //Init of buttonExportGui
-    GtkWidget *buttonExportGui = gtk_button_new_with_label("Export");
-    gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,12,10,1);
-    g_signal_connect(buttonExportGui,"clicked",G_CALLBACK(exportGui),NULL);
-    gtk_widget_set_size_request(buttonExportGui,400,-1);
-
-}
-
-void declareWidgetLabels() {
-    //Removes the old widgets
-    GtkWidget *child;
-    while ((child = gtk_widget_get_first_child(GTK_WIDGET(gridWidgets))) != NULL) {
-        gtk_grid_remove(GTK_GRID(gridWidgets), child);
-    }
-    for (int i=0; i < widgetCount; i++) {
-        if (widget[i].isOccupied==1){
-            //Init of boxAlarm
-            widget[i].boxWidgetInfo = gtk_center_box_new();
-            gtk_orientable_set_orientation(GTK_ORIENTABLE(widget[i].boxWidgetInfo),GTK_ORIENTATION_HORIZONTAL);
-            gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].boxWidgetInfo,0,i,1,1);
-            gtk_widget_set_size_request(widget[i].boxWidgetInfo,380,-1);
-
-            //init of labelWidgetinfo
-            char widgetInfo[200];
-            snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
-                                                   "Widget Type: %s \n"
-                                                   "Grid Placement: %d %d",
-                                                   widget[i].widgetName,
-                                                   widget[i].type.widgetTypeName,
-                                                   widget[i].grid.row,
-                                                   widget[i].grid.col);
-            widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
-            gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetInfo);
-            gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
-
-            //Init of buttonDeleteWidget
-            widget[i].buttonDeleteWidget = gtk_button_new_with_label("❌");
-            gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
-            g_signal_connect(widget[i].buttonDeleteWidget,"clicked",G_CALLBACK(deleteWidget),GINT_TO_POINTER(i));
         }
     }
-}
+
+        widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
+        widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
+
+        widget[widgetCount].grid.rowSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRowSpan));
+        widget[widgetCount].grid.colSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumnSpan));
+        //Checks if colspan and rowspan is 0 or less and defaults the value to -1 if that's the case
+        if (widget[widgetCount].grid.rowSpan<=0 && widget[widgetCount].grid.colSpan<=0) {
+            widget[widgetCount].grid.rowSpan=1;
+            widget[widgetCount].grid.colSpan=1;
+        }else if (widget[widgetCount].grid.rowSpan<=0) {
+            widget[widgetCount].grid.rowSpan=1;
+        }else if (widget[widgetCount].grid.colSpan<=0) {
+            widget[widgetCount].grid.colSpan=1;
+        }
+
+        widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
+        widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
+        //checks if min height or width is 0 or less if so defaults it to -1
+        if (widget[widgetCount].minSize.height<=0 && widget[widgetCount].minSize.width<=0) {
+            widget[widgetCount].minSize.height=-1;
+            widget[widgetCount].minSize.width=-1;
+        }else if (widget[widgetCount].minSize.height<=0) {
+            widget[widgetCount].minSize.height=-1;
+        }else if (widget[widgetCount].minSize.width<=0) {
+            widget[widgetCount].minSize.width=-1;
+        }
 
 
-void deleteWidget(GtkButton *button, gpointer user_data){
-    int i = GPOINTER_TO_INT(user_data);
-    for (int j = i; j!=widgetCount ; j++) {
-        widget[j] = widget[j+1];
+        widgetCount++;
+        gtk_window_destroy(GTK_WINDOW(windowAddWidget));
+        declareWidgetLabels();
     }
-    declareWidgetLabels();
-    widgetCount--;
-}
 
-void exportGui() {
-    //Writes the widget data in binary for other program to read
-    FILE *file1 = fopen("widget.data","w");
-    fwrite(&widgetCount,sizeof(widgetCount),1,file1);
-    fwrite(&widget,sizeof(widget),widgetCount,file1);
-    fclose(file1);
-    //Writes the data in a documentation style for a hooman to read
-    FILE *file2 = fopen("WidgetDocumentation.txt","w");
-    fprintf(file2,"S.N. \t Widget Name \t Widget Type \t Row \t Row Span \t Column \t Column Span \t Min Width \t Min Height \n");
-    for (int i =0; i<widgetCount;i++) {
-        fprintf(file2,"%d \t %s \t %s \t %d \t %d \t %d \t %d \t %d \t %d",
-            i+1,
-            widget[i].widgetName,
-            widget[i].type.widgetTypeName,
-            widget[i].grid.row,
-            widget[i].grid.rowSpan,
-            widget[i].grid.col,
-            widget[i].grid.colSpan,
-            widget[i].minSize.width,
-            widget[i].minSize.height);
+    //Globalization of variables
+    GtkWidget *scrolledWindowWidgets;
+    GtkWidget *gridWidgets;
+    static void activate(GtkApplication *app,gpointer user_data){
+
+        //init of windowMain
+        GtkWidget *windowMain = gtk_application_window_new(app);
+        gtk_window_set_default_size(GTK_WINDOW(windowMain),400,500);
+        gtk_window_set_title(GTK_WINDOW(windowMain),"JustaGuiFramework");
+        gtk_window_present(GTK_WINDOW(windowMain));
+
+        //init of headerMain
+        GtkWidget *headerMain = gtk_header_bar_new();
+        gtk_window_set_titlebar(GTK_WINDOW(windowMain),headerMain);
+
+        //init of button add widget
+        GtkWidget *buttonAddWidget = gtk_button_new_with_label("➕");
+        gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonAddWidget);
+        g_signal_connect(buttonAddWidget,"clicked",G_CALLBACK(screenAddWidget),NULL);
+
+        //init buttonChildWindow
+        GtkWidget *buttonChildWindow = gtk_button_new_with_label("🧭");
+        gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonChildWindow);
+        g_signal_connect(buttonChildWindow,"clicked",G_CALLBACK(screenWindowChild),NULL);
+
+        //init of gridParent
+        GtkWidget *gridParent = gtk_grid_new();
+        gtk_window_set_child(GTK_WINDOW(windowMain),gridParent);
+        //Margins & Paddings
+        gtk_widget_set_margin_start(gridParent,10);
+        gtk_widget_set_margin_end(gridParent,10);
+        gtk_widget_set_margin_top(gridParent,10);
+        gtk_widget_set_margin_bottom(gridParent,10);
+        gtk_widget_set_halign(gridParent,GTK_ALIGN_CENTER);
+        gtk_widget_set_valign(gridParent,GTK_ALIGN_CENTER);
+
+        //init of labelWidgets
+        GtkWidget *labelWidgets = gtk_label_new("Widgets");
+        gtk_grid_attach(GTK_GRID(gridParent),labelWidgets,0,0,10,1);
+
+        //Init of scrolledWindowWidgets
+        scrolledWindowWidgets = gtk_scrolled_window_new();
+        gtk_grid_attach(GTK_GRID(gridParent),scrolledWindowWidgets,0,1,10,10);
+        gtk_widget_set_size_request(scrolledWindowWidgets,380,400);
+
+        //Init of gridScrolledWindow
+        gridWidgets = gtk_grid_new();
+        gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scrolledWindowWidgets),gridWidgets);
+
+
+        //Init of buttonExportGui
+        GtkWidget *buttonExportGui = gtk_button_new_with_label("Export");
+        gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,12,10,1);
+        g_signal_connect(buttonExportGui,"clicked",G_CALLBACK(exportGui),NULL);
+        gtk_widget_set_size_request(buttonExportGui,400,-1);
+
     }
 
-}
+    void declareWidgetLabels() {
+        //Removes the old widgets
+        GtkWidget *child;
+        while ((child = gtk_widget_get_first_child(GTK_WIDGET(gridWidgets))) != NULL) {
+            gtk_grid_remove(GTK_GRID(gridWidgets), child);
+        }
+        for (int i=0; i < widgetCount; i++) {
+            if (widget[i].isOccupied==1){
+                //Init of boxAlarm
+                widget[i].boxWidgetInfo = gtk_center_box_new();
+                gtk_orientable_set_orientation(GTK_ORIENTABLE(widget[i].boxWidgetInfo),GTK_ORIENTATION_HORIZONTAL);
+                gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].boxWidgetInfo,0,i,1,1);
+                gtk_widget_set_size_request(widget[i].boxWidgetInfo,380,-1);
 
-void declareWidgets() {
-    //Sets the widgets as null
-    int i=0;
-    while (widget[i].widget!=NULL) {
-        widget[i].widget=NULL;
-        i++;
-    }
-    for (int j = 0; j<widgetCount;j++) {
-        if (widget[j].type.isButton==1) {
-            widget[j].widget = gtk_button_new_with_label(widget[i].button.label);
-        }else if (widget[j].type.isLabel==1){
-            widget[j].widget = gtk_label_new(widget[i].label.label);
-        }else if (widget[j].type.isEntry==1) {
-        widget[j].widget = gtk_entry_new();
+                //init of labelWidgetinfo
+                char widgetInfo[200];
+                snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
+                                                       "Widget Type: %s \n"
+                                                       "Grid Placement: %d %d",
+                                                       widget[i].widgetName,
+                                                       widget[i].type.widgetTypeName,
+                                                       widget[i].grid.row,
+                                                       widget[i].grid.col);
+                widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
+                gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetInfo);
+                gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
+
+                //Init of buttonDeleteWidget
+                widget[i].buttonDeleteWidget = gtk_button_new_with_label("❌");
+                gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
+                g_signal_connect(widget[i].buttonDeleteWidget,"clicked",G_CALLBACK(deleteWidget),GINT_TO_POINTER(i));
+            }
         }
     }
-}
 
-int main(int argc, char **argv) {
-    GtkApplication *app;
-    int status;
-    app= gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
-    g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
-    status = g_application_run (G_APPLICATION (app), argc, argv);
-    g_object_unref (app);
 
-    return status;
-}
+    void deleteWidget(GtkButton *button, gpointer user_data){
+        int i = GPOINTER_TO_INT(user_data);
+        for (int j = i; j!=widgetCount ; j++) {
+            widget[j] = widget[j+1];
+        }
+        declareWidgetLabels();
+        widgetCount--;
+    }
+
+    void exportGui() {
+        //Writes the widget data in binary for other program to read
+        FILE *file1 = fopen("widget.data","w");
+        fwrite(&widgetCount,sizeof(widgetCount),1,file1);
+        fwrite(&widget,sizeof(widget),widgetCount,file1);
+        fclose(file1);
+        //Writes the data in a documentation style for a hooman to read
+        FILE *file2 = fopen("WidgetDocumentation.txt","w");
+        fprintf(file2,"S.N. \t Widget Name \t Widget Type \t Row \t Row Span \t Column \t Column Span \t Min Width \t Min Height \n");
+        for (int i =0; i<widgetCount;i++) {
+            fprintf(file2,"%d \t %s \t %s \t %d \t %d \t %d \t %d \t %d \t %d",
+                i+1,
+                widget[i].widgetName,
+                widget[i].type.widgetTypeName,
+                widget[i].grid.row,
+                widget[i].grid.rowSpan,
+                widget[i].grid.col,
+                widget[i].grid.colSpan,
+                widget[i].minSize.width,
+                widget[i].minSize.height);
+        }
+
+    }
+
+    void declareWidgets() {
+        //Sets the widgets as null
+        int i=0;
+        while (widget[i].widget!=NULL) {
+            widget[i].widget=NULL;
+            i++;
+        }
+        for (int j = 0; j<widgetCount;j++) {
+            if (widget[j].type.isButton==1) {
+                widget[j].widget = gtk_button_new_with_label(widget[i].button.label);
+            }else if (widget[j].type.isLabel==1){
+                widget[j].widget = gtk_label_new(widget[i].label.label);
+            }else if (widget[j].type.isEntry==1) {
+                widget[j].widget = gtk_entry_new();
+                if (widget[j].entry.hasPlaceHolderText==1) {
+                    gtk_entry_set_placeholder_text(GTK_ENTRY(widget[j].widget),widget[j].entry.placeholderText);
+                }
+            }
+        }
+    }
+
+    int main(int argc, char **argv) {
+        GtkApplication *app;
+        int status;
+        app= gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
+        g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
+        status = g_application_run (G_APPLICATION (app), argc, argv);
+        g_object_unref (app);
+
+        return status;
+    }
 
