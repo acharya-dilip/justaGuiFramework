@@ -30,6 +30,7 @@ struct widgets{
         int isButton;
         int isEntry;
         int isLabel;
+        int isTextView;
     }type;
     struct button {
         char label[100];
@@ -60,7 +61,7 @@ GtkWidget *spinbuttonGridPlacementColumnSpan;
 GtkWidget *spinbuttonMinHeight;
 GtkWidget *spinbuttonMinWidth;
 GtkWidget *entryLabel;
-const char *widgetList[]={"Button","Label","Entry",NULL};
+const char *widgetList[]={"Button","Label","Entry","T.View",NULL};
 GtkStringList *listWidgets;
 //Init of defaultAdjustment
 GtkAdjustment *defaultAdjustmentRow;
