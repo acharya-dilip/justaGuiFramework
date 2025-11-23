@@ -30,6 +30,13 @@ struct widgets{
 void screenAddWidget();
 void registerWidget();
 
+//Glovbized Varuables
+GtkWidget *entryWidgetName;
+GtkWidget *dropdownWidgets;
+GtkWidget *entryGridPlacementRow;
+GtkWidget *entryGridPlacementColumn;
+GtkWidget *entryLabel
+
 void screenAddWidget() {
 
     //Init of windowAddWidget
@@ -48,7 +55,7 @@ void screenAddWidget() {
     gtk_widget_set_margin_start(gridParentWidgets,10);
 
     //Init of entryWidgetName
-    GtkWidget *entryWidgetName = gtk_entry_new();
+    entryWidgetName = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryWidgetName,0,0,8,1);
     gtk_entry_set_placeholder_text(GTK_ENTRY(entryWidgetName),"Enter Widget Name");
     //Margins & Paddings
@@ -57,7 +64,7 @@ void screenAddWidget() {
     //Init of dropdownWidgets
     const char *widgetList[]={"Button","Entry",NULL};
     GtkStringList *listWidgets = gtk_string_list_new(widgetList);
-    GtkWidget *dropdownWidgets = gtk_drop_down_new(G_LIST_MODEL (listWidgets), NULL);
+    dropdownWidgets = gtk_drop_down_new(G_LIST_MODEL (listWidgets), NULL);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),dropdownWidgets,8,0,2,1);
 
     //Init of labelPlacement
@@ -74,7 +81,7 @@ void screenAddWidget() {
     gtk_widget_set_margin_top(labelGridPlacementRow,4);
 
     //Init of entryGridPlacementRow
-    GtkWidget *entryGridPlacementRow = gtk_entry_new();
+    entryGridPlacementRow = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementRow,1,3,5,1);
 
     //Init of labelGridPlacementColumn
@@ -83,24 +90,24 @@ void screenAddWidget() {
     gtk_widget_set_margin_top(labelGridPlacementColumn,4);
 
     //Init of entryGridPlacementColumn
-    GtkWidget *entryGridPlacementColumn = gtk_entry_new();
+    entryGridPlacementColumn = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementColumn,7,3,3,1);
 
     //Init of entrylabel
-    GtkWidget *entryLabel = gtk_entry_new();
+    entryLabel = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,4,10,1);
     gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label");
 
 
     //Init of buttonAddWidget
-    GtkWidget *buttonAddWidget = gtk_button_new_with_label("Add Widget");
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonAddWidget,0,20,10,1);
+    GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
 
 
 
 }
 void  registerWidget(){
-
+    //Function to hold all the logic for when the buttonRegister
 }
 static void activate(GtkApplication *app,gpointer user_data) {
 
