@@ -285,44 +285,47 @@ static void activate(GtkApplication *app,gpointer user_data) {
 }
 
 void declareWidgetLabels() {
-  //Removes the old widgets
+    //Removes the old widgets
     GtkWidget *child;
     while ((child = gtk_widget_get_first_child(GTK_WIDGET(gridWidgets))) != NULL) {
         gtk_grid_remove(GTK_GRID(gridWidgets), child);
     }
     for (int i=0; i < widgetCount; i++) {
-        //Init of boxAlarm
-        widget[i].boxWidgetInfo = gtk_center_box_new();
-        gtk_orientable_set_orientation(GTK_ORIENTABLE(widget[i].boxWidgetInfo),GTK_ORIENTATION_HORIZONTAL);
-        gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].boxWidgetInfo,0,i,1,1);
-        gtk_widget_set_size_request(widget[i].boxWidgetInfo,380,-1);
+        if (widget[i].isOccupied==1){
+            //Init of boxAlarm
+            widget[i].boxWidgetInfo = gtk_center_box_new();
+            gtk_orientable_set_orientation(GTK_ORIENTABLE(widget[i].boxWidgetInfo),GTK_ORIENTATION_HORIZONTAL);
+            gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].boxWidgetInfo,0,i,1,1);
+            gtk_widget_set_size_request(widget[i].boxWidgetInfo,380,-1);
 
-        //init of labelWidgetinfo
-        char widgetInfo[200];
-        snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
-                                               "Widget Type: %s \n"
-                                               "Grid Placement: %d %d",
-                                               widget[i].widgetName,
-                                               widget[i].type.widgetTypeName,
-                                               widget[i].grid.row,
-                                               widget[i].grid.col);
-        widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
-        gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetInfo);
-        gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
+            //init of labelWidgetinfo
+            char widgetInfo[200];
+            snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
+                                                   "Widget Type: %s \n"
+                                                   "Grid Placement: %d %d",
+                                                   widget[i].widgetName,
+                                                   widget[i].type.widgetTypeName,
+                                                   widget[i].grid.row,
+                                                   widget[i].grid.col);
+            widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
+            gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetInfo);
+            gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
 
-        //Init of buttonDeleteWidget
-        widget[i].buttonDeleteWidget = gtk_button_new_with_label("❌");
-        gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
-        g_signal_connect(widget[i].buttonDeleteWidget,"clicked",G_CALLBACK(deleteWidget),GINT_TO_POINTER(i));
+            //Init of buttonDeleteWidget
+            widget[i].buttonDeleteWidget = gtk_button_new_with_label("❌");
+            gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
+            g_signal_connect(widget[i].buttonDeleteWidget,"clicked",G_CALLBACK(deleteWidget),GINT_TO_POINTER(i));
+        }
     }
 }
 
 
-void deleteWidget(GtkButton *button, gpointer user_data) {
+void deleteWidget(GtkButton *button, gpointer user_data){
     int i = GPOINTER_TO_INT(user_data);
     for (int j = i; j!=widgetCount ; j++) {
         widget[j] = widget[j+1];
     }
+    declareWidgetLabels();
 }
 
 int main(int argc, char **argv) {
