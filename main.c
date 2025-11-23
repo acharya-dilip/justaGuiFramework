@@ -36,18 +36,23 @@ GtkWidget *entryWidgetName;
 GtkWidget *dropdownWidgets;
 GtkWidget *spinbuttonGridPlacementRow;
 GtkWidget *spinbuttonGridPlacementColumn;
+GtkWidget *spinbuttonGridPlacementRowSpan;
+GtkWidget *spinbuttonGridPlacementColumnSpan;
 GtkWidget *entryLabel;
 const char *widgetList[]={"Button","Entry",NULL};
 GtkStringList *listWidgets;
 //Init of defaultAdjustment
 GtkAdjustment *defaultAdjustmentRow;
 GtkAdjustment *defaultAdjustmentColumn;
+GtkAdjustment *defaultAdjustmentRowSpan;
+GtkAdjustment *defaultAdjustmentColumnSpan;
 
 
 void screenAddWidget() {
     defaultAdjustmentRow = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
     defaultAdjustmentColumn = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
-
+    defaultAdjustmentRowSpan = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentColumnSpan = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
     //Init of windowAddWidget
     GtkWidget *windowAddWidget = gtk_window_new();
     gtk_window_set_default_size(GTK_WINDOW(windowAddWidget),300,300);
