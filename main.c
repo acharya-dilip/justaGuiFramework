@@ -34,11 +34,13 @@ void registerWidget();
 //Glovbized Varuables
 GtkWidget *entryWidgetName;
 GtkWidget *dropdownWidgets;
-GtkWidget *entryGridPlacementRow;
-GtkWidget *entryGridPlacementColumn;
+GtkWidget *spinbuttonGridPlacementRow;
+GtkWidget *spinbuttonGridPlacementColumn;
 GtkWidget *entryLabel;
 const char *widgetList[]={"Button","Entry",NULL};
 GtkStringList *listWidgets;
+//Init of defaultAdjustment
+GtkAdjustment *defaultAdjustment = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
 
 
 void screenAddWidget() {
@@ -83,8 +85,9 @@ void screenAddWidget() {
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementRow,0,3,1,1);
     gtk_widget_set_margin_top(labelGridPlacementRow,4);
 
+
     //Init of entryGridPlacementRow
-    entryGridPlacementRow = gtk_entry_new();
+    entryGridPlacementRow = gtk_spin_button_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementRow,1,3,5,1);
 
     //Init of labelGridPlacementColumn
@@ -115,7 +118,10 @@ void  registerWidget(){
     widget[widgetCount].isOccupied = 1;
     strcpy(widget[widgetCount].widgetName,gtk_editable_get_text(GTK_EDITABLE(entryWidgetName)));
     const char *widgetType = gtk_string_list_get_string(GTK_STRING_LIST(listWidgets), gtk_drop_down_get_selected(GTK_DROP_DOWN(dropdownWidgets)));
-    if(strcmp(widgetType,"Button")==0){}
+    if(strcmp(widgetType,"Button")==0){
+    widget[widgetCount].widget = gtk_button_new_with_label(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+
+}
     else if(strcmp(widgetType,"Label")==0){}
     else if(strcmp(widgetType,"Entry")==0){}
 
