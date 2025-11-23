@@ -99,12 +99,12 @@ void screenWindowChild() {
 
 }
 void screenAddWidget() {
-    defaultAdjustmentRow = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
-    defaultAdjustmentColumn = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
-    defaultAdjustmentRowSpan = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
-    defaultAdjustmentColumnSpan = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
-    defaultAdjustmentMinHeight = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
-    defaultAdjustmentMinWidth = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentRow = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentColumn = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentRowSpan = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentColumnSpan = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentMinHeight = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    defaultAdjustmentMinWidth = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
 
     //Init of windowAddWidget
     windowAddWidget = gtk_window_new();
