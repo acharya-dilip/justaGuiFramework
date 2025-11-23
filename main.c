@@ -37,6 +37,9 @@ GtkWidget *dropdownWidgets;
 GtkWidget *entryGridPlacementRow;
 GtkWidget *entryGridPlacementColumn;
 GtkWidget *entryLabel;
+const char *widgetList[]={"Button","Entry",NULL};
+GtkStringList *listWidgets;
+
 
 void screenAddWidget() {
 
@@ -63,8 +66,7 @@ void screenAddWidget() {
     gtk_widget_set_size_request(entryWidgetName,210,-1);
 
     //Init of dropdownWidgets
-    const char *widgetList[]={"Button","Entry",NULL};
-    GtkStringList *listWidgets = gtk_string_list_new(widgetList);
+    listWidgets = gtk_string_list_new(widgetList);
     dropdownWidgets = gtk_drop_down_new(G_LIST_MODEL (listWidgets), NULL);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),dropdownWidgets,8,0,2,1);
 
@@ -107,8 +109,12 @@ void screenAddWidget() {
 
 
 }
+int widgetCount;
 void  registerWidget(){
     //Function to hold all the logic for when the buttonRegister
+    widget[widgetCount].isOccupied = 1;
+    widget[widgetCount].widgetName = gtk_editable_get_text(GTK_EDITABLE(entryWidgetName));
+
 }
 static void activate(GtkApplication *app,gpointer user_data) {
 
