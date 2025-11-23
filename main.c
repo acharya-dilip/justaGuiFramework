@@ -38,6 +38,7 @@ void screenAddWidget();
 void registerWidget();
 
 //Glovbized Varuables
+GtkWidget *windowAddWidget;
 GtkWidget *entryWidgetName;
 GtkWidget *dropdownWidgets;
 GtkWidget *spinbuttonGridPlacementRow;
@@ -67,7 +68,7 @@ void screenAddWidget() {
     defaultAdjustmentMinWidth = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
 
     //Init of windowAddWidget
-    GtkWidget *windowAddWidget = gtk_window_new();
+    windowAddWidget = gtk_window_new();
     gtk_window_set_default_size(GTK_WINDOW(windowAddWidget),300,300);
     gtk_window_set_title(GTK_WINDOW(windowAddWidget),"Add Widget");
     gtk_window_present(GTK_WINDOW(windowAddWidget));
@@ -186,6 +187,8 @@ void screenAddWidget() {
 
 
 }
+
+
 int widgetCount;
 void  registerWidget(){
     //Function to hold all the logic for when the buttonRegister
@@ -206,6 +209,9 @@ void  registerWidget(){
     widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
     widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
     widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
+
+    widgetCount++;
+    gtk_widget_destroy(windowAddWidget);
 
 
 }
