@@ -472,12 +472,12 @@ void  registerWidget() {
 
     void exportGui() {
         //Writes the widget data in binary for other program to read
-        FILE *file1 = fopen("widget.data","w");
+        FILE *file1 = fopen("ExportedGui/widget.data","w");
         fwrite(&widgetCount,sizeof(widgetCount),1,file1);
         fwrite(&widget,sizeof(widget),widgetCount,file1);
         fclose(file1);
         //Writes the data in a documentation style for a hooman to read
-        FILE *file2 = fopen("WidgetDocumentation.txt","w");
+        FILE *file2 = fopen("ExportedGui/WidgetDocumentation.txt","w");
         fprintf(file2,"S.N. \t Widget Name \t Widget Type \t Row \t Row Span \t Column \t Column Span \t Min Width \t Min Height \t Margin Top \t Margin Bottom \t Margin Start \t Margin End \n");
         for (int i =0; i<widgetCount;i++) {
             fprintf(file2,"%d \t %s \t %s \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d ",
@@ -496,6 +496,7 @@ void  registerWidget() {
                 widget[i].margin.end);
         }
     fclose(file2);
+
     }
 
     void declareWidgets() {
