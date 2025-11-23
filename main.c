@@ -105,7 +105,7 @@ void screenAddWidget() {
     //Init of buttonAddWidget
     GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
-
+    g_signal_connect(buttonRegisterWidget,"clicked",G_CALLBACK(registerWidget),NULL);
 
 
 }
