@@ -300,7 +300,7 @@ void declareWidgetLabels() {
         char widgetInfo[200];
         snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
                                                "Widget Type: %s \n"
-                                               "Grid Placement: %d %d\n",
+                                               "Grid Placement: %d %d",
                                                widget[i].widgetName,
                                                widget[i].type.widgetTypeName,
                                                widget[i].grid.row,
