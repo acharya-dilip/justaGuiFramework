@@ -240,6 +240,10 @@ static void activate(GtkApplication *app,gpointer user_data) {
     GtkWidget *gridParent = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowMain),gridParent);
 
+    //Init of buttonExportGui
+    GtkWidget *buttonExportGui = gtk_button_new();
+    gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,10,10,1);
+
 }
 
 int main(int argc, char **argv) {
