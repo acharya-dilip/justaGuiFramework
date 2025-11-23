@@ -224,24 +224,24 @@ void  registerWidget(){
     widget[widgetCount].grid.colSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumnSpan));
     //Checks if colspan and rowspan is 0 or less and defaults the value to -1 if that's the case
     if (widget[widgetCount].grid.rowSpan<=0 && widget[widgetCount].grid.colSpan<=0) {
-        widget[widgetCount].grid.rowSpan=0;
-        widget[widgetCount].grid.colSpan=0;
+        widget[widgetCount].grid.rowSpan=-1;
+        widget[widgetCount].grid.colSpan=-1;
     }else if (widget[widgetCount].grid.rowSpan<=0) {
-        widget[widgetCount].grid.rowSpan=0;
+        widget[widgetCount].grid.rowSpan=-1;
     }else if (widget[widgetCount].grid.colSpan<=0) {
-        widget[widgetCount].grid.colSpan=0;
+        widget[widgetCount].grid.colSpan=-1;
     }
 
     widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
     widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
     //checks if min height or width is 0 or less if so defaults it to -1
     if (widget[widgetCount].minSize.height<=0 && widget[widgetCount].minSize.width<=0) {
-        widget[widgetCount].minSize.height=0;
-        widget[widgetCount].minSize.width=0;
+        widget[widgetCount].minSize.height=-1;
+        widget[widgetCount].minSize.width=-1;
     }else if (widget[widgetCount].minSize.height<=0) {
-        widget[widgetCount].minSize.height=0;
+        widget[widgetCount].minSize.height=-1;
     }else if (widget[widgetCount].minSize.width<=0) {
-        widget[widgetCount].minSize.width=0;
+        widget[widgetCount].minSize.width=-1;
     }
 
 
