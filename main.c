@@ -238,7 +238,7 @@ void  registerWidget() {
         widget[widgetCount].type.isButton = 1;
     }
     else if(strcmp(widgetType,"Label")==0){
-        strcpy(widget[widgetCount].button.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        strcpy(widget[widgetCount].label.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
         widget[widgetCount].type.isLabel = 1;
     }
     else if(strcmp(widgetType,"Entry")==0) {
@@ -251,10 +251,10 @@ void  registerWidget() {
 
         widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
         widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
-
         widget[widgetCount].grid.rowSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRowSpan));
         widget[widgetCount].grid.colSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumnSpan));
-        //Checks if colspan and rowspan is 0 or less and defaults the value to -1 if that's the case
+
+    //Checks if colspan and rowspan is 0 or less and defaults the value to -1 if that's the case
         if (widget[widgetCount].grid.rowSpan<=0 && widget[widgetCount].grid.colSpan<=0) {
             widget[widgetCount].grid.rowSpan=1;
             widget[widgetCount].grid.colSpan=1;
