@@ -236,6 +236,10 @@ static void activate(GtkApplication *app,gpointer user_data) {
     GtkWidget *buttonChildWindow = gtk_button_new_with_label("🧭");
     gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonChildWindow);
 
+    //init of gridParent
+    GtkWidget *gridParent = gtk_grid_new();
+    gtk_window_set_child(GTK_WINDOW(windowMain),gridParent);
+
 }
 
 int main(int argc, char **argv) {
