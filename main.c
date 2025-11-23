@@ -86,8 +86,8 @@ void screenAddWidget() {
     gtk_widget_set_margin_top(labelGridPlacementRow,4);
 
 
-    //Init of entryGridPlacementRow
-    entryGridPlacementRow = gtk_spin_button_new();
+    //Init of spinbuttonGridPlacementRow
+    spinbuttonGridPlacementRow = gtk_spin_button_new(defaultAdjustment,1,0);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementRow,1,3,5,1);
 
     //Init of labelGridPlacementColumn
