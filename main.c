@@ -299,13 +299,12 @@ void declareWidgetLabels() {
         //init of labelWidgetinfo
         char widgetInfo[200];
         snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
-                                               "Grid Placement: %d %d\n"
-                                               "Cell Span: %d %d",
+                                               "Widget Type: %s \n"
+                                               "Grid Placement: %d %d\n",
                                                widget[i].widgetName,
+                                               widget[i].type.widgetTypeName,
                                                widget[i].grid.row,
-                                               widget[i].grid.col,
-                                               widget[i].grid.rowSpan,
-                                               widget[i].grid.colSpan);
+                                               widget[i].grid.col);
         widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
         gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetInfo);
         gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
