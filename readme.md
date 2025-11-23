@@ -47,3 +47,5 @@ documentation of your given widgets in order to provide you with a flawless expe
   cause he hasn't gotten enough sleep and his schools starts in 2 hours again!
 - contactme: acharyamission6@gmail.com
 - I had fun building this and am partly proud that I built smth liek this cause if I can refine this enough it might actually be a good framework
+- Btw this project is a framework for a framework that fits the theme framework which in turn gets me closer to a framework
+- Confusing Right? Worry Not This is justaGuiFramework hehehehehe
