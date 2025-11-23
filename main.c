@@ -379,7 +379,10 @@ void deleteWidget(GtkButton *button, gpointer user_data){
 }
 
 void exportGui() {
-
+    FILE *file = fopen("widget.data","w");
+    fwrite(&widgetCount,sizeof(widgetCount),1,file);
+    fwrite(&widget,sizeof(widget),widgetCount,file);
+    fclose(file);
 }
 
 int main(int argc, char **argv) {
