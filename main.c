@@ -215,6 +215,9 @@ void  registerWidget(){
 
 
 }
+//Globalization of variables
+GtkWidget *scrolledWindowWidgets;
+GtkWidget *gridWidgets;
 static void activate(GtkApplication *app,gpointer user_data) {
 
     //init of windowMain
@@ -241,11 +244,11 @@ static void activate(GtkApplication *app,gpointer user_data) {
     gtk_window_set_child(GTK_WINDOW(windowMain),gridParent);
 
     //Init of scrolledWindowWidgets
-    GtkWidget *scrolledWindowWidgets = gtk_scrolled_window_new();
+    scrolledWindowWidgets = gtk_scrolled_window_new();
     gtk_grid_attach(GTK_GRID(gridParent),scrolledWindowWidgets,0,0,10,10);
 
     //Init of gridScrolledWindow
-    GtkWidget *gridWidgets = gtk_grid_new();
+    gridWidgets = gtk_grid_new();
     gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scrolledWindowWidgets),gridWidgets);
 
 
