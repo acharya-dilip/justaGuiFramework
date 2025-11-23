@@ -238,6 +238,7 @@ void  registerWidget(){
 }
     else if(strcmp(widgetType,"Label")==0){
         widget[widgetCount].widget = gtk_label_new(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+
 }
     else if(strcmp(widgetType,"Entry")==0){
         widget[widgetCount].widget = gtk_entry_new();
@@ -273,6 +274,7 @@ void  registerWidget(){
     widgetCount++;
     gtk_window_destroy(GTK_WINDOW(windowAddWidget));
     declareWidgetLabels();
+    screenWindowChild();
 
 
 
