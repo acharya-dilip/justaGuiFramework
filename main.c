@@ -340,6 +340,18 @@ void screenWindowChild() {
     //Init of gridParent
     GtkWidget *gridParent = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowChild),gridParent);
+
+    for (int i=0;i<widgetCount;i++) {
+        gtk_grid_attach(GTK_GRID(gridParent),widget[i].widget,
+            widget[i].grid.col,
+            widget[i].grid.row,
+            widget[i].grid.colSpan,
+            widget[i].grid.rowSpan);
+        gtk_widget_set_size_request(widget[i].widget,
+            widget[i].minSize.width,
+            widget[i].minSize.height);
+    }
+
 }
 
 int main(int argc, char **argv) {
