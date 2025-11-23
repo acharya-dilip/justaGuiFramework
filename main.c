@@ -82,6 +82,13 @@ void screenAddWidget() {
     dropdownWidgets = gtk_drop_down_new(G_LIST_MODEL (listWidgets), NULL);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),dropdownWidgets,8,0,2,1);
 
+    //Init of entrylabel
+    entryLabel = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,1,10,1);
+    gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label");
+    //Margins & Paddings
+    gtk_widget_set_margin_top(entryLabel,10);
+
     //Init of labelPlacement
     GtkWidget *labelPlacement = gtk_label_new("Grid Placement:");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelPlacement,0,2,6,1);
@@ -112,12 +119,14 @@ void screenAddWidget() {
     //Init of labelGridPlacementRowSpan
     GtkWidget *labelGridPlacementRowSpan = gtk_label_new("Height:");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementRowSpan,0,4,1,1);
-    gtk_widget_set_margin_top(labelGridPlacementRow,4);
+    gtk_widget_set_margin_top(labelGridPlacementRowSpan,4);
 
 
     //Init of spinbuttonGridPlacementRowSpan
     spinbuttonGridPlacementRowSpan = gtk_spin_button_new(defaultAdjustmentRowSpan,1,0);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementRowSpan,1,4,5,1);
+    gtk_widget_set_margin_top(spinbuttonGridPlacementRowSpan,4);
+
 
     //Init of labelGridPlacementColumnSpan
     GtkWidget *labelGridPlacementColumnSpan = gtk_label_new("Width:");
@@ -127,14 +136,7 @@ void screenAddWidget() {
     //Init of spinbuttonGridPlacementColumnSpan
     spinbuttonGridPlacementColumnSpan = gtk_spin_button_new(defaultAdjustmentColumnSpan ,1,0);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementColumnSpan,7,4,3,1);
-
-    //Init of entrylabel
-    entryLabel = gtk_entry_new();
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,5,10,1);
-    gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label");
-    //Margins & Paddings
-    gtk_widget_set_margin_top(entryLabel,10);
-
+    gtk_widget_set_margin_top(spinbuttonGridPlacementColumnSpan,4);
 
     //Init of buttonAddWidget
     GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
