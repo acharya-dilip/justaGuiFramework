@@ -241,7 +241,7 @@ static void activate(GtkApplication *app,gpointer user_data) {
     gtk_window_set_child(GTK_WINDOW(windowMain),gridParent);
 
     //Init of buttonExportGui
-    GtkWidget *buttonExportGui = gtk_button_new();
+    GtkWidget *buttonExportGui = gtk_button_new_with_label("Export");
     gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,10,10,1);
 
 }
