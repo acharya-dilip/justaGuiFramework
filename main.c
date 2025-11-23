@@ -87,7 +87,7 @@ void screenAddWidget() {
 
     //Init of entrylabel
     GtkWidget *entryLabel = gtk_entry_new();
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,4,5,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,4,10,1);
     gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label");
 
 
