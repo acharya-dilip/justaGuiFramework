@@ -46,6 +46,7 @@ void screenAddWidget();
 void registerWidget();
 void declareWidgetLabels();
 void deleteWidget(GtkButton *button, gpointer user_data);
+void screenWindowChild();
 
 //Glovbized Varuables
 GtkWidget *windowAddWidget;
@@ -58,7 +59,7 @@ GtkWidget *spinbuttonGridPlacementColumnSpan;
 GtkWidget *spinbuttonMinHeight;
 GtkWidget *spinbuttonMinWidth;
 GtkWidget *entryLabel;
-const char *widgetList[]={"Button","Entry",NULL};
+const char *widgetList[]={"Button","Label","Entry",NULL};
 GtkStringList *listWidgets;
 //Init of defaultAdjustment
 GtkAdjustment *defaultAdjustmentRow;
@@ -326,6 +327,12 @@ void deleteWidget(GtkButton *button, gpointer user_data){
         widget[j] = widget[j+1];
     }
     declareWidgetLabels();
+}
+
+void screenWindowChild() {
+    for (int i =0; i<widgetCount;i++) {
+
+    }
 }
 
 int main(int argc, char **argv) {
