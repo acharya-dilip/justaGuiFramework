@@ -415,11 +415,11 @@ void declareWidgets() {
     }
     for (int j = 0; j<widgetCount;j++) {
         if (widget[j].type.isButton==1) {
-            widget[widgetCount].widget = gtk_button_new_with_label(widget[i].button.label);
+            widget[j].widget = gtk_button_new_with_label(widget[i].button.label);
         }else if (widget[j].type.isLabel==1){
-            widget[widgetCount].widget = gtk_label_new(widget[i].label.label);
+            widget[j].widget = gtk_label_new(widget[i].label.label);
         }else if (widget[j].type.isEntry==1) {
-        widget[widgetCount].widget = gtk_entry_new();
+        widget[j].widget = gtk_entry_new();
         }
     }
 }
