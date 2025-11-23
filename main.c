@@ -123,6 +123,7 @@ void screenWindowChild() {
     }
 
 }
+
 void screenAddWidget() {
     defaultAdjustmentRow = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
     defaultAdjustmentColumn = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
@@ -201,12 +202,10 @@ void screenAddWidget() {
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementRowSpan,0,4,1,1);
     gtk_widget_set_margin_top(labelGridPlacementRowSpan,4);
 
-
     //Init of spinbuttonGridPlacementRowSpan
     spinbuttonGridPlacementRowSpan = gtk_spin_button_new(defaultAdjustmentRowSpan,1,0);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementRowSpan,1,4,5,1);
     gtk_widget_set_margin_top(spinbuttonGridPlacementRowSpan,4);
-
 
     //Init of labelGridPlacementColumnSpan
     GtkWidget *labelGridPlacementColumnSpan = gtk_label_new("Width:");
@@ -294,14 +293,12 @@ void screenAddWidget() {
     gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonMarginBottom,7,9,3,1);
     gtk_widget_set_margin_top(spinbuttonMarginBottom,4);
 
-
     //Init of buttonAddWidget
     GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
     g_signal_connect(buttonRegisterWidget,"clicked",G_CALLBACK(registerWidget),NULL);
     //Margins & Paddings
     gtk_widget_set_margin_top(buttonRegisterWidget,10);
-
 
 }
 void  registerWidget() {
@@ -327,7 +324,6 @@ void  registerWidget() {
     }else if(strcmp(widgetType,"T.View")==0){
         widget[widgetCount].type.isTextView = 1;
     }
-
         widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
         widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
         widget[widgetCount].grid.rowSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRowSpan));
@@ -342,7 +338,6 @@ void  registerWidget() {
         }else if (widget[widgetCount].grid.colSpan<=0) {
             widget[widgetCount].grid.colSpan=1;
         }
-
         widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
         widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
         //checks if min height or width is 0 or less if so defaults it to -1
@@ -354,13 +349,10 @@ void  registerWidget() {
         }else if (widget[widgetCount].minSize.width<=0) {
             widget[widgetCount].minSize.width=-1;
         }
-
         widget[widgetCount].margin.top = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginTop));
         widget[widgetCount].margin.bottom = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginBottom));
         widget[widgetCount].margin.start = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginStart));
         widget[widgetCount].margin.end = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginEnd));
-
-
 
         widgetCount++;
         gtk_window_destroy(GTK_WINDOW(windowAddWidget));
@@ -415,7 +407,6 @@ void  registerWidget() {
         //Init of gridScrolledWindow
         gridWidgets = gtk_grid_new();
         gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scrolledWindowWidgets),gridWidgets);
-
 
         //Init of buttonExportGui
         GtkWidget *buttonExportGui = gtk_button_new_with_label("Export");
