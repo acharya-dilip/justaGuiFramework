@@ -465,8 +465,6 @@ void  registerWidget() {
             gtk_widget_set_margin_end(widget[j].widget,widget[j].margin.end);
         }
     }
-
-
     int main(int argc, char **argv) {
         GtkApplication *app= gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
         g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
