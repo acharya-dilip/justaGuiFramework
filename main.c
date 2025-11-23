@@ -109,9 +109,28 @@ void screenAddWidget() {
     spinbuttonGridPlacementColumn = gtk_spin_button_new(defaultAdjustmentColumn ,1,0);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementColumn,7,3,3,1);
 
+    //Init of labelGridPlacementRowSpan
+    GtkWidget *labelGridPlacementRowSpan = gtk_label_new("Height:");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementRowSpan,0,4,1,1);
+    gtk_widget_set_margin_top(labelGridPlacementRow,4);
+
+
+    //Init of spinbuttonGridPlacementRowSpan
+    spinbuttonGridPlacementRowSpan = gtk_spin_button_new(defaultAdjustmentRowSpan,1,0);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementRow,1,4,5,1);
+
+    //Init of labelGridPlacementColumnSpan
+    GtkWidget *labelGridPlacementColumnSpan = gtk_label_new("Width:");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementColumnSpan,6,4,1,1);
+    gtk_widget_set_margin_top(labelGridPlacementColumnSpan,4);
+
+    //Init of spinbuttonGridPlacementColumn
+    spinbuttonGridPlacementColumnSpan = gtk_spin_button_new(defaultAdjustmentColumnSpan ,1,0);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementColumnSpan,7,4,3,1);
+
     //Init of entrylabel
     entryLabel = gtk_entry_new();
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,4,10,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,5,10,1);
     gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label");
     //Margins & Paddings
     gtk_widget_set_margin_top(entryLabel,10);
