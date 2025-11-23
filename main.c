@@ -88,16 +88,16 @@ void screenAddWidget() {
 
     //Init of spinbuttonGridPlacementRow
     spinbuttonGridPlacementRow = gtk_spin_button_new(defaultAdjustment,1,0);
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementRow,1,3,5,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementRow,1,3,5,1);
 
     //Init of labelGridPlacementColumn
     GtkWidget *labelGridPlacementColumn = gtk_label_new("Col:");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementColumn,6,3,1,1);
     gtk_widget_set_margin_top(labelGridPlacementColumn,4);
 
-    //Init of entryGridPlacementColumn
-    entryGridPlacementColumn = gtk_entry_new();
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),entryGridPlacementColumn,7,3,3,1);
+    //Init of spinbuttonGridPlacementColumn
+    spinbuttonGridPlacementColumn = gtk_spin_button_new(defaultAdjustment,1,0);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementColumn,7,3,3,1);
 
     //Init of entrylabel
     entryLabel = gtk_entry_new();
