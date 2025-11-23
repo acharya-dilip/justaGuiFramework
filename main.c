@@ -379,10 +379,27 @@ void deleteWidget(GtkButton *button, gpointer user_data){
 }
 
 void exportGui() {
-    FILE *file = fopen("widget.data","w");
-    fwrite(&widgetCount,sizeof(widgetCount),1,file);
-    fwrite(&widget,sizeof(widget),widgetCount,file);
-    fclose(file);
+    //Writes the widget data in binary for other program to read
+    FILE *file1 = fopen("widget.data","w");
+    fwrite(&widgetCount,sizeof(widgetCount),1,file1);
+    fwrite(&widget,sizeof(widget),widgetCount,file1);
+    fclose(file1);
+    //Writes the data in a documentation style for a hooman to read
+    FILE *file2 = fopen("WidgetDocumentation.txt","w");
+    fprintf(file2,"S.N. \t Widget Name \t Widget Type \t Row \t Row Span \t Column \t Column Span \t Min Width \t Min Height \n");
+    for (int i =0; i<widgetCount;i++) {
+        fprintf(file2,"%d \t %s \t %s \t %d \t %d \t %d \t %d \t %d \t %d",
+            i+1,
+            widget[i].widgetName,
+            widget[i].type.widgetTypeName,
+            widget[i].grid.row,
+            widget[i].grid.rowSpan,
+            widget[i].grid.col,
+            widget[i].grid.colSpan,
+            widget[i].minSize.width,
+            widget[i].minSize.height);
+    }
+
 }
 
 int main(int argc, char **argv) {
