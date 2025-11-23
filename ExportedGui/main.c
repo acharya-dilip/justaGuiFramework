@@ -115,7 +115,9 @@ void declareWidgets() {
 
 void readWidgetData() {
     FILE *file = fopen("widget.data","r");
-    fread()
+    fread(&widgetCount, sizeof(widgetCount), 1, file);
+    fread(&widget,sizeof(widget),widgetCount,file);
+    fclose(file);
 }
 
 
