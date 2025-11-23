@@ -242,6 +242,14 @@ void screenAddWidget() {
     gtk_widget_set_margin_top(labelMargins,10);
     gtk_widget_set_margin_bottom(labelMargins,10);
 
+    //Init of labelMarginStart
+    GtkWidget *labelMarginStart = gtk_label_new("Height:");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMarginStart,0,8,1,1);
+    gtk_widget_set_margin_top(labelMarginStart,4);
+
+
+
+
     //Init of buttonAddWidget
     GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
