@@ -305,6 +305,10 @@ void declareWidgetLabels() {
         widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
         gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetInfo);
         gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
+
+        //Init of buttonDeleteWidget
+        widget[i].buttonDeleteWidget = gtk_button_new_with_label("❌");
+        gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
     }
 }
 
