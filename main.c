@@ -47,6 +47,7 @@ void registerWidget();
 void declareWidgetLabels();
 void deleteWidget(GtkButton *button, gpointer user_data);
 void screenWindowChild();
+void exportGui();
 
 //Glovbized Varuables
 GtkWidget *windowAddWidget;
@@ -377,7 +378,9 @@ void deleteWidget(GtkButton *button, gpointer user_data){
     declareWidgetLabels();
 }
 
+void exportGui() {
 
+}
 
 int main(int argc, char **argv) {
     GtkApplication *app;
