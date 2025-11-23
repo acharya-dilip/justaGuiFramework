@@ -48,6 +48,7 @@ void declareWidgetLabels();
 void deleteWidget(GtkButton *button, gpointer user_data);
 void screenWindowChild();
 void exportGui();
+void declareWidgets();
 
 //Glovbized Varuables
 GtkWidget *windowAddWidget;
@@ -402,6 +403,10 @@ void exportGui() {
             widget[i].minSize.width,
             widget[i].minSize.height);
     }
+
+}
+
+void declareWidgets() {
 
 }
 
