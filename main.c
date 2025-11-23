@@ -138,6 +138,14 @@ void screenAddWidget() {
     gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementColumnSpan,7,4,3,1);
     gtk_widget_set_margin_top(spinbuttonGridPlacementColumnSpan,4);
 
+    //Init of labelMinSize
+    GtkWidget *labelMinSize = gtk_label_new("Minimum Size:");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),labelMinSize,0,2,6,1);
+    gtk_widget_set_halign(labelMinSize,GTK_ALIGN_START);
+    gtk_widget_set_margin_start(labelMinSize,6);
+    gtk_widget_set_margin_top(labelMinSize,6);
+    gtk_widget_set_margin_bottom(labelMinSize,10);
+
     //Init of buttonAddWidget
     GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
