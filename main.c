@@ -232,10 +232,18 @@ void  registerWidget(){
         widget[widgetCount].grid.colSpan=0;
     }
 
-
-
     widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
     widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
+    //checks if min height or width is 0 or less if so defaults it to -1
+    if (widget[widgetCount].minSize.height<=0 && widget[widgetCount].minSize.width<=0) {
+        widget[widgetCount].minSize.height=0;
+        widget[widgetCount].minSize.width=0;
+    }else if (widget[widgetCount].minSize.height<=0) {
+        widget[widgetCount].minSize.height=0;
+    }else if (widget[widgetCount].minSize.width<=0) {
+        widget[widgetCount].minSize.width=0;
+    }
+
 
     widgetCount++;
     gtk_window_destroy(GTK_WINDOW(windowAddWidget));
