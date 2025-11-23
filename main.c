@@ -117,14 +117,14 @@ void screenAddWidget() {
 
     //Init of spinbuttonGridPlacementRowSpan
     spinbuttonGridPlacementRowSpan = gtk_spin_button_new(defaultAdjustmentRowSpan,1,0);
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementRow,1,4,5,1);
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementRowSpan,1,4,5,1);
 
     //Init of labelGridPlacementColumnSpan
     GtkWidget *labelGridPlacementColumnSpan = gtk_label_new("Width:");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),labelGridPlacementColumnSpan,6,4,1,1);
     gtk_widget_set_margin_top(labelGridPlacementColumnSpan,4);
 
-    //Init of spinbuttonGridPlacementColumn
+    //Init of spinbuttonGridPlacementColumnSpan
     spinbuttonGridPlacementColumnSpan = gtk_spin_button_new(defaultAdjustmentColumnSpan ,1,0);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonGridPlacementColumnSpan,7,4,3,1);
 
