@@ -478,9 +478,9 @@ void  registerWidget() {
         fclose(file1);
         //Writes the data in a documentation style for a hooman to read
         FILE *file2 = fopen("WidgetDocumentation.txt","w");
-        fprintf(file2,"S.N. \t Widget Name \t Widget Type \t Row \t Row Span \t Column \t Column Span \t Min Width \t Min Height \n");
+        fprintf(file2,"S.N. \t Widget Name \t Widget Type \t Row \t Row Span \t Column \t Column Span \t Min Width \t Min Height \t Margin Top \t Margin Bottom \t Margin Start \t Margin End \n");
         for (int i =0; i<widgetCount;i++) {
-            fprintf(file2,"%d \t %s \t %s \t %d \t %d \t %d \t %d \t %d \t %d",
+            fprintf(file2,"%d \t %s \t %s \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d ",
                 i+1,
                 widget[i].widgetName,
                 widget[i].type.widgetTypeName,
@@ -489,7 +489,11 @@ void  registerWidget() {
                 widget[i].grid.col,
                 widget[i].grid.colSpan,
                 widget[i].minSize.width,
-                widget[i].minSize.height);
+                widget[i].minSize.height,
+                widget[i].margin.top,
+                widget[i].margin.bottom,
+                widget[i].margin.start,
+                widget[i].margin.end);
         }
 
     }
