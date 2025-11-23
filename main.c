@@ -5,6 +5,12 @@ struct widgets{
     int isOccupied;
     char widgetName[100];
     GtkWidget *widget;
+
+    //For the display thing
+    GtkWidget *boxWidgetInfo;
+    GtkWidget *labelWidgetName;
+    GtkWidget *buttonDeleteWidget;
+
     struct label{
         char label[100];
     }label;
