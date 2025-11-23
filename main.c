@@ -35,11 +35,8 @@ struct widgets{
         char label[100];
     }button;
     struct entry {
-        int hasPlaceholderText;
+        int hasPlaceHolderText;
         char placeholderText[100];
-        int hasPreText;
-        char preText[100];
-        int isEditable;
     }entry;
 }widget[100];
 int widgetCount;
@@ -50,6 +47,7 @@ void deleteWidget(GtkButton *button, gpointer user_data);
 void screenWindowChild();
 void exportGui();
 void declareWidgets();
+void updateAddWidgets();
 
 //Glovbized Varuables
 GtkWidget *windowAddWidget;
@@ -243,9 +241,13 @@ void  registerWidget(){
         strcpy(widget[widgetCount].button.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
         widget[widgetCount].type.isLabel = 1;
     }
-    else if(strcmp(widgetType,"Entry")==0){
+    else if(strcmp(widgetType,"Entry")==0) {
         widget[widgetCount].type.isEntry = 1;
-}
+        if (strcmp(gtk_editable_get_text(GTK_EDITABLE(entryLabel)),"")!=0){
+        strcpy(widget[widgetCount].entry.placeholderText,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+            widget[widgetCount].entry.hasPlaceHolderText = 1;
+    }
+
     widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
     widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
 
