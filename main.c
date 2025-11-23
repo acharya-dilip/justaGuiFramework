@@ -26,6 +26,7 @@ struct widgets{
     int width;
     }minSize;
     struct widgetType {
+        char widgetTypeName[100];
         int isButton;
         int isEntry;
     }type;
@@ -220,6 +221,7 @@ void  registerWidget(){
 
     widgetCount++;
     gtk_window_destroy(GTK_WINDOW(windowAddWidget));
+    declareWidgetLabels();
 
 
 }
