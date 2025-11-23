@@ -41,7 +41,7 @@ struct widgets{
         int isEditable;
     }entry;
 }widget[100];
-
+int widgetCount;
 void screenAddWidget();
 void registerWidget();
 void declareWidgetLabels();
@@ -69,7 +69,34 @@ GtkAdjustment *defaultAdjustmentColumnSpan;
 GtkAdjustment *defaultAdjustmentMinHeight;
 GtkAdjustment *defaultAdjustmentMinWidth;
 
+//Globalised variables
+GtkWidget *windowChild;
+void screenWindowChild() {
 
+    //Init of windowChild
+    windowChild = gtk_window_new();
+    gtk_window_set_title(GTK_WINDOW(windowChild),"Made Using JustaGuiFramework");
+    gtk_window_set_default_size(GTK_WINDOW(windowChild),200,200);
+    gtk_window_present(GTK_WINDOW(windowChild));
+
+    //Init of gridParent
+    GtkWidget *gridParent = gtk_grid_new();
+    gtk_window_set_child(GTK_WINDOW(windowChild),gridParent);
+
+    for (int i=0;i<widgetCount;i++) {
+        if (widget[i].isOccupied==1) {
+            gtk_grid_attach(GTK_GRID(gridParent),widget[i].widget,
+            widget[i].grid.col,
+            widget[i].grid.row,
+            widget[i].grid.colSpan,
+            widget[i].grid.rowSpan);
+            gtk_widget_set_size_request(widget[i].widget,
+                widget[i].minSize.width,
+                widget[i].minSize.height);
+        }
+    }
+
+}
 void screenAddWidget() {
     defaultAdjustmentRow = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
     defaultAdjustmentColumn = gtk_adjustment_new(0.0, 0.0, 100.0, 1.0, 10.0, 0.0);
@@ -198,9 +225,6 @@ void screenAddWidget() {
 
 
 }
-
-
-int widgetCount;
 void  registerWidget(){
     //Function to hold all the logic for when the buttonRegister
     widget[widgetCount].isOccupied = 1;
@@ -248,6 +272,7 @@ void  registerWidget(){
     widgetCount++;
     gtk_window_destroy(GTK_WINDOW(windowAddWidget));
     declareWidgetLabels();
+
 
 
 }
@@ -352,32 +377,7 @@ void deleteWidget(GtkButton *button, gpointer user_data){
     declareWidgetLabels();
 }
 
-void screenWindowChild() {
 
-    //Init of windowChild
-    GtkWidget *windowChild = gtk_window_new();
-    gtk_window_set_title(GTK_WINDOW(windowChild),"Made Using JustaGuiFramework");
-    gtk_window_set_default_size(GTK_WINDOW(windowChild),200,200);
-    gtk_window_present(GTK_WINDOW(windowChild));
-
-    //Init of gridParent
-    GtkWidget *gridParent = gtk_grid_new();
-    gtk_window_set_child(GTK_WINDOW(windowChild),gridParent);
-
-    for (int i=0;i<widgetCount;i++) {
-        if (widget[i].isOccupied==1) {
-            gtk_grid_attach(GTK_GRID(gridParent),widget[i].widget,
-            widget[i].grid.col,
-            widget[i].grid.row,
-            widget[i].grid.colSpan,
-            widget[i].grid.rowSpan);
-            gtk_widget_set_size_request(widget[i].widget,
-                widget[i].minSize.width,
-                widget[i].minSize.height);
-        }
-    }
-
-}
 
 int main(int argc, char **argv) {
     GtkApplication *app;
