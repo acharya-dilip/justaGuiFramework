@@ -3,6 +3,7 @@
 
 struct widgets{
     int isOccupied;
+    char widgetName[100];
     GtkWidget *widget;
     struct label{
         char label[100];
@@ -35,7 +36,7 @@ GtkWidget *entryWidgetName;
 GtkWidget *dropdownWidgets;
 GtkWidget *entryGridPlacementRow;
 GtkWidget *entryGridPlacementColumn;
-GtkWidget *entryLabel
+GtkWidget *entryLabel;
 
 void screenAddWidget() {
 
