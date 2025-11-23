@@ -330,9 +330,12 @@ void deleteWidget(GtkButton *button, gpointer user_data){
 }
 
 void screenWindowChild() {
-    for (int i =0; i<widgetCount;i++) {
 
-    }
+    //Init of windowChild
+    GtkWidget *windowChild = gtk_window_new();
+    gtk_window_set_title(GTK_WINDOW(windowChild),"Made Using JustaGuiFramework");
+    gtk_window_present(GTK_WINDOW(windowChild));
+
 }
 
 int main(int argc, char **argv) {
