@@ -45,6 +45,7 @@ struct widgets{
 void screenAddWidget();
 void registerWidget();
 void declareWidgetLabels();
+void deleteWidget();
 
 //Glovbized Varuables
 GtkWidget *windowAddWidget;
@@ -313,6 +314,10 @@ void declareWidgetLabels() {
         widget[i].buttonDeleteWidget = gtk_button_new_with_label("❌");
         gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
     }
+}
+
+void deleteWidget() {
+
 }
 
 int main(int argc, char **argv) {
