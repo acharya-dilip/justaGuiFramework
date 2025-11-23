@@ -425,7 +425,9 @@ void  registerWidget() {
                 widget[j].widget = gtk_button_new_with_label(widget[i].button.label);
             }else if (widget[j].type.isLabel==1){
                 widget[j].widget = gtk_label_new(widget[i].label.label);
-            }else if (widget[j].type.isEntry==1) {
+            }else if (widget[j].type.isTextView==1){
+            widget[j].widget = gtk_text_view_new();
+        }else if (widget[j].type.isEntry==1) {
                 widget[j].widget = gtk_entry_new();
                 if (widget[j].entry.hasPlaceHolderText==1) {
                     gtk_entry_set_placeholder_text(GTK_ENTRY(widget[j].widget),widget[j].entry.placeholderText);
