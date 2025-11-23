@@ -330,6 +330,7 @@ static void activate(GtkApplication *app,gpointer user_data) {
     //Init of buttonExportGui
     GtkWidget *buttonExportGui = gtk_button_new_with_label("Export");
     gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,12,10,1);
+    g_signal_connect(buttonExportGui,"clicked",G_CALLBACK(exportGui),NULL);
     gtk_widget_set_size_request(buttonExportGui,400,-1);
 
 }
