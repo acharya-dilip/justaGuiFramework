@@ -194,7 +194,9 @@ void  registerWidget(){
     else if(strcmp(widgetType,"Label")==0){
         widget[widgetCount].widget = gtk_label_new(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
 }
-    else if(strcmp(widgetType,"Entry")==0){}
+    else if(strcmp(widgetType,"Entry")==0){
+        widget[widgetCount].widget = gtk_entry_new();
+}
 
     widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
     widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
