@@ -301,6 +301,7 @@ void screenAddWidget() {
     gtk_widget_set_margin_top(buttonRegisterWidget,10);
 
 }
+//It registers/Inputs the values of the widgets and their properties in the widget struct
 void  registerWidget() {
     //Function to hold all the logic for when the buttonRegister
     widget[widgetCount].isOccupied = 1;
@@ -338,6 +339,7 @@ void  registerWidget() {
         }else if (widget[widgetCount].grid.colSpan<=0) {
             widget[widgetCount].grid.colSpan=1;
         }
+
         widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
         widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
         //checks if min height or width is 0 or less if so defaults it to -1
@@ -349,11 +351,13 @@ void  registerWidget() {
         }else if (widget[widgetCount].minSize.width<=0) {
             widget[widgetCount].minSize.width=-1;
         }
+        //Reads and stores the margin values
         widget[widgetCount].margin.top = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginTop));
         widget[widgetCount].margin.bottom = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginBottom));
         widget[widgetCount].margin.start = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginStart));
         widget[widgetCount].margin.end = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginEnd));
 
+        //Increases the widgetCount as more widgets are added
         widgetCount++;
         gtk_window_destroy(GTK_WINDOW(windowAddWidget));
         declareWidgetLabels();
@@ -422,9 +426,11 @@ void  registerWidget() {
         while ((child = gtk_widget_get_first_child(GTK_WIDGET(gridWidgets))) != NULL) {
             gtk_grid_remove(GTK_GRID(gridWidgets), child);
         }
+        //Adds plaques/Labels for widgets with some of their info
         for (int i=0; i < widgetCount; i++) {
+            //checks if the widget is occupied
             if (widget[i].isOccupied==1){
-                //Init of boxAlarm
+                //Init of boxWidgetInfo
                 widget[i].boxWidgetInfo = gtk_center_box_new();
                 gtk_orientable_set_orientation(GTK_ORIENTABLE(widget[i].boxWidgetInfo),GTK_ORIENTATION_HORIZONTAL);
                 gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].boxWidgetInfo,0,i,1,1);
@@ -451,7 +457,7 @@ void  registerWidget() {
         }
     }
 
-
+    //Overrites the widget that is to be deleted with the succeeding widget and soon
     void deleteWidget(GtkButton *button, gpointer user_data){
         int i = GPOINTER_TO_INT(user_data);
         for (int j = i; j!=widgetCount ; j++) {
@@ -489,7 +495,7 @@ void  registerWidget() {
     fclose(file2);
 
     }
-
+    //Declares the widget in the struct according to the information and configurations provided
     void declareWidgets() {
         //Sets the widgets as null
         int i=0;
