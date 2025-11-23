@@ -29,6 +29,7 @@ struct widgets{
         char widgetTypeName[100];
         int isButton;
         int isEntry;
+        int isLabel;
     }type;
     struct button {
         char label[100];
@@ -84,7 +85,8 @@ void screenWindowChild() {
     //Init of gridParent
     GtkWidget *gridParent = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowChild),gridParent);
-
+    //Declares the widgets with their appropiriate widgetType
+    declareWidgets();
     for (int i=0;i<widgetCount;i++) {
         if (widget[i].isOccupied==1) {
             gtk_grid_attach(GTK_GRID(gridParent),widget[i].widget,
@@ -234,15 +236,15 @@ void  registerWidget(){
     const char *widgetType = gtk_string_list_get_string(GTK_STRING_LIST(listWidgets), gtk_drop_down_get_selected(GTK_DROP_DOWN(dropdownWidgets)));
     strcpy(widget[widgetCount].type.widgetTypeName,widgetType);
     if(strcmp(widget[widgetCount].type.widgetTypeName,"Button")==0){
-    // widget[widgetCount].widget = gtk_button_new_with_label(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
-
-}
+    strcpy(widget[widgetCount].button.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+    widget[widgetCount].type.isButton = 1;
+    }
     else if(strcmp(widgetType,"Label")==0){
-        // widget[widgetCount].widget = gtk_label_new(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
-
-}
+        strcpy(widget[widgetCount].button.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        widget[widgetCount].type.isLabel = 1;
+    }
     else if(strcmp(widgetType,"Entry")==0){
-        // widget[widgetCount].widget = gtk_entry_new();
+        widget[widgetCount].type.isEntry = 1;
 }
     widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
     widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
@@ -412,6 +414,15 @@ void declareWidgets() {
     while (widget[i].widget!=NULL) {
         widget[i].widget=NULL;
         i++;
+    }
+    for (int j = 0; j<widgetCount;j++) {
+        if (widget[j].type.isButton==1) {
+            widget[widgetCount].widget = gtk_button_new_with_label(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        }else if (widget[j].type.isLabel==1){
+            widget[widgetCount].widget = gtk_label_new(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        }else if (widget[j].type.isEntry==1) {
+        widget[widgetCount].widget = gtk_entry_new();
+        }
     }
 }
 
