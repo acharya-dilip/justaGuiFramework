@@ -407,7 +407,12 @@ void exportGui() {
 }
 
 void declareWidgets() {
-
+    //Sets the widgets as null
+    int i=0;
+    while (widget[i].widget!=NULL) {
+        widget[i].widget=NULL;
+        i++;
+    }
 }
 
 int main(int argc, char **argv) {
