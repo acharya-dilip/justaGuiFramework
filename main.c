@@ -115,7 +115,6 @@ void  registerWidget(){
     widget[widgetCount].isOccupied = 1;
     strcpy(widget[widgetCount].widgetName,gtk_editable_get_text(GTK_EDITABLE(entryWidgetName)));
     const char *widgetType = gtk_string_list_get_string(GTK_STRING_LIST(listWidgets), gtk_drop_down_get_selected(GTK_DROP_DOWN(dropdownWidgets)));
-    printf("%s\n",widgetType);
 
 }
 static void activate(GtkApplication *app,gpointer user_data) {
