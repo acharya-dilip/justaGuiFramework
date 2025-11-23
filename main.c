@@ -14,6 +14,10 @@ struct widgets{
         int rowSpan;
         int colSpan;
     }grid;
+    struct minSize{
+    int height;
+    int width;
+    }minSize;
     struct widgetType {
         int isButton;
         int isEntry;
