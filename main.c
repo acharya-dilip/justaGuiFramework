@@ -495,7 +495,7 @@ void  registerWidget() {
                 widget[i].margin.start,
                 widget[i].margin.end);
         }
-
+    fclose(file2);
     }
 
     void declareWidgets() {
@@ -525,6 +525,7 @@ void  registerWidget() {
 
         }
     }
+
 
     int main(int argc, char **argv) {
         GtkApplication *app;
