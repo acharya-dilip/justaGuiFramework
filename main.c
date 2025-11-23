@@ -11,6 +11,8 @@ struct widgets{
     struct grid {
         int row;
         int col;
+        int rowSpan;
+        int colSpan;
     }grid;
     struct widgetType {
         int isButton;
