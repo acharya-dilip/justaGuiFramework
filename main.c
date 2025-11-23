@@ -211,7 +211,7 @@ void  registerWidget(){
     widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
 
     widgetCount++;
-    gtk_widget_destroy(windowAddWidget);
+    gtk_window_destroy(GTK_WINDOW(windowAddWidget));
 
 
 }
