@@ -106,12 +106,16 @@ void screenAddWidget() {
     entryLabel = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryLabel,0,4,10,1);
     gtk_entry_set_placeholder_text(GTK_ENTRY(entryLabel),"Enter Widget Label");
+    //Margins & Paddings
+    gtk_widget_set_margin_top(entryLabel,10);
 
 
     //Init of buttonAddWidget
     GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
     g_signal_connect(buttonRegisterWidget,"clicked",G_CALLBACK(registerWidget),NULL);
+    //Margins & Paddings
+    gtk_widget_set_margin_top(buttonRegisterWidget,10);
 
 
 }
