@@ -217,9 +217,23 @@ void  registerWidget(){
     else if(strcmp(widgetType,"Entry")==0){
         widget[widgetCount].widget = gtk_entry_new();
 }
-
     widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
     widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
+
+    widget[widgetCount].grid.rowSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRowSpan));
+    widget[widgetCount].grid.colSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumnSpan));
+    //Checks if colspan and rowspan is 0 or less and defaults the value to -1 if that's the case
+    if (widget[widgetCount].grid.rowSpan<=0 && widget[widgetCount].grid.colSpan<=0) {
+        widget[widgetCount].grid.rowSpan=0;
+        widget[widgetCount].grid.colSpan=0;
+    }else if (widget[widgetCount].grid.rowSpan<=0) {
+        widget[widgetCount].grid.rowSpan=0;
+    }else if (widget[widgetCount].grid.colSpan<=0) {
+        widget[widgetCount].grid.colSpan=0;
+    }
+
+
+
     widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
     widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
 
@@ -252,6 +266,7 @@ static void activate(GtkApplication *app,gpointer user_data) {
     //init buttonChildWindow
     GtkWidget *buttonChildWindow = gtk_button_new_with_label("🧭");
     gtk_header_bar_pack_start(GTK_HEADER_BAR(headerMain),buttonChildWindow);
+    g_signal_connect(buttonChildWindow,"clicked",G_CALLBACK(screenWindowChild),NULL);
 
     //init of gridParent
     GtkWidget *gridParent = gtk_grid_new();
