@@ -69,6 +69,7 @@ static void activate(GtkApplication *app,gpointer user_data) {
 
 
     //Declares the widgets with their appropiriate widgetType
+    readWidgetData();
     declareWidgets();
     for (int i=0;i<widgetCount;i++) {
         if (widget[i].isOccupied==1) {
