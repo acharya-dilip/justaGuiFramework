@@ -39,6 +39,12 @@ struct widgets{
         int hasPlaceHolderText;
         char placeholderText[100];
     }entry;
+    struct margins {
+        int top;
+        int bottom;
+        int start;
+        int end;
+    }margin;
 }widget[100];
 int widgetCount;
 void screenAddWidget();
