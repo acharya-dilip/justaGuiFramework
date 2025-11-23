@@ -246,6 +246,7 @@ static void activate(GtkApplication *app,gpointer user_data) {
     //Init of scrolledWindowWidgets
     scrolledWindowWidgets = gtk_scrolled_window_new();
     gtk_grid_attach(GTK_GRID(gridParent),scrolledWindowWidgets,0,0,10,10);
+    gtk_widget_set_size_request(scrolledWindowWidgets,400,-1);
 
     //Init of gridScrolledWindow
     gridWidgets = gtk_grid_new();
