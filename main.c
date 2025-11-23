@@ -45,7 +45,7 @@ struct widgets{
 void screenAddWidget();
 void registerWidget();
 void declareWidgetLabels();
-void deleteWidget();
+void deleteWidget(GtkButton *button, gpointer user_data);
 
 //Glovbized Varuables
 GtkWidget *windowAddWidget;
@@ -313,11 +313,16 @@ void declareWidgetLabels() {
         //Init of buttonDeleteWidget
         widget[i].buttonDeleteWidget = gtk_button_new_with_label("❌");
         gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
+        g_signal_connect(widget[i].buttonDeleteWidget,"clicked",G_CALLBACK(deleteWidget),GINT_TO_POINTER(i));
     }
 }
 
-void deleteWidget() {
 
+void deleteWidget(GtkButton *button, gpointer user_data) {
+    int i = GPOINTER_TO_INT(user_data);
+    for (int j = i; j!=widgetCount ; j++) {
+        widget[j] = widget[j+1];
+    }
 }
 
 int main(int argc, char **argv) {
