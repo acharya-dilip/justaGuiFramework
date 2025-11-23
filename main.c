@@ -355,6 +355,12 @@ void  registerWidget() {
             widget[widgetCount].minSize.width=-1;
         }
 
+        widget[widgetCount].margin.top = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginTop));
+        widget[widgetCount].margin.bottom = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginBottom));
+        widget[widgetCount].margin.start = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginStart));
+        widget[widgetCount].margin.end = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginEnd));
+
+
 
         widgetCount++;
         gtk_window_destroy(GTK_WINDOW(windowAddWidget));
