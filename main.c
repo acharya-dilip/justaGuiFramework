@@ -123,15 +123,14 @@ void  registerWidget(){
     const char *widgetType = gtk_string_list_get_string(GTK_STRING_LIST(listWidgets), gtk_drop_down_get_selected(GTK_DROP_DOWN(dropdownWidgets)));
     if(strcmp(widgetType,"Button")==0){
     widget[widgetCount].widget = gtk_button_new_with_label(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+}
+    else if(strcmp(widgetType,"Label")==0){
+        widget[widgetCount].widget = gtk_label_new(gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+}
+    else if(strcmp(widgetType,"Entry")==0){}
+
     widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
     widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
-printf("row=%d \t col=%d",
-widget[widgetCount].grid.row,
-widget[widgetCount].grid.col);
-
-}
-    else if(strcmp(widgetType,"Label")==0){}
-    else if(strcmp(widgetType,"Entry")==0){}
 
 }
 static void activate(GtkApplication *app,gpointer user_data) {
