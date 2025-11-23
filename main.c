@@ -514,6 +514,11 @@ void  registerWidget() {
                     gtk_entry_set_placeholder_text(GTK_ENTRY(widget[j].widget),widget[j].entry.placeholderText);
                 }
             }
+            gtk_widget_set_margin_top(widget[j].widget,widget[j].margin.top);
+            gtk_widget_set_margin_bottom(widget[j].widget,widget[j].margin.bottom);
+            gtk_widget_set_margin_start(widget[j].widget,widget[j].margin.start);
+            gtk_widget_set_margin_end(widget[j].widget,widget[j].margin.end);
+
         }
     }
 
