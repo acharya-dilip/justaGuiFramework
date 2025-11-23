@@ -28,6 +28,7 @@ struct widgets{
 }widget[100];
 
 void screenAddWidget();
+void registerWidget();
 
 void screenAddWidget() {
 
@@ -98,7 +99,9 @@ void screenAddWidget() {
 
 
 }
+void  registerWidget(){
 
+}
 static void activate(GtkApplication *app,gpointer user_data) {
 
     //init of windowMain
