@@ -85,7 +85,7 @@ void yourCode();
 
 static void activate(GtkApplication *app,gpointer user_data) {
     //Init of windowChild
-    GtkWidget *windowChild = gtk_window_new();
+    GtkWidget *windowChild = gtk_application_window_new(app);
     gtk_window_set_title(GTK_WINDOW(windowChild),"JustaGuiFramework");
     gtk_window_set_default_size(GTK_WINDOW(windowChild),200,200);
     gtk_window_present(GTK_WINDOW(windowChild));
