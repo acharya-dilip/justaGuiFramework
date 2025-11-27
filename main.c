@@ -61,23 +61,7 @@ void updateScreenAddWidgets();
 
 
 
-//Glovbized Varuables
-GtkWidget *windowAddWidget;
-GtkWidget *entryWidgetName;
-GtkWidget *dropdownWidgets;
-GtkWidget *spinbuttonGridPlacementRow;
-GtkWidget *spinbuttonGridPlacementColumn;
-GtkWidget *spinbuttonGridPlacementRowSpan;
-GtkWidget *spinbuttonGridPlacementColumnSpan;
-GtkWidget *spinbuttonMinHeight;
-GtkWidget *spinbuttonMinWidth;
-GtkWidget *spinbuttonMarginStart;
-GtkWidget *spinbuttonMarginEnd;
-GtkWidget *spinbuttonMarginTop;
-GtkWidget *spinbuttonMarginBottom;
-GtkWidget *entryLabel;
-const char *widgetList[]={"Button","Label","Entry","T.View",NULL};
-GtkStringList *listWidgets;
+
 //Init of defaultAdjustment
 GtkAdjustment *defaultAdjustmentRow;
 GtkAdjustment *defaultAdjustmentColumn;
@@ -122,6 +106,24 @@ void screenWindowChild() {
         }
     }
 }
+
+//Glovbized Varuables
+GtkWidget *windowAddWidget;
+GtkWidget *entryWidgetName;
+GtkWidget *dropdownWidgets;
+GtkWidget *spinbuttonGridPlacementRow;
+GtkWidget *spinbuttonGridPlacementColumn;
+GtkWidget *spinbuttonGridPlacementRowSpan;
+GtkWidget *spinbuttonGridPlacementColumnSpan;
+GtkWidget *spinbuttonMinHeight;
+GtkWidget *spinbuttonMinWidth;
+GtkWidget *spinbuttonMarginStart;
+GtkWidget *spinbuttonMarginEnd;
+GtkWidget *spinbuttonMarginTop;
+GtkWidget *spinbuttonMarginBottom;
+GtkWidget *entryLabel;
+const char *widgetList[]={"Button","Label","Entry","T.View",NULL};
+GtkStringList *listWidgets;
 void screenAddWidget() {
     defaultAdjustmentRow = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
     defaultAdjustmentColumn = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
@@ -165,6 +167,7 @@ void screenAddWidget() {
     listWidgets = gtk_string_list_new(widgetList);
     dropdownWidgets = gtk_drop_down_new(G_LIST_MODEL (listWidgets), NULL);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),dropdownWidgets,8,0,2,1);
+    g_signal_connect(listWidgets,"notify::selected",G_CALLBACK(updateScreenAddWidgets),NULL);
 
 
     //Init of entrylabel
@@ -351,7 +354,9 @@ void screenAddWidget() {
 }
 
 
+void updateScreenAddWidgets() {
 
+}
 
 
 
@@ -413,6 +418,13 @@ void  registerWidget() {
         gtk_window_destroy(GTK_WINDOW(windowAddWidget));
         declareWidgetLabels();
     }
+
+
+
+
+
+
+
     //Globalization of variables
     GtkWidget *scrolledWindowWidgets;
     GtkWidget *gridWidgets;
@@ -460,9 +472,7 @@ void  registerWidget() {
         gtk_widget_set_size_request(buttonExportGui,400,-1);
     }
 
-    void updateScreenAddWidgets() {
 
-    }
 
 
 
