@@ -8,6 +8,7 @@ struct widgets{
     GtkWidget *boxWidgetInfo;
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
+    GtkWidget *gridButton;
     GtkWidget *buttonDeleteWidget;
     GtkWidget *buttonEditWidget;
 
@@ -391,15 +392,20 @@ void  registerWidget() {
                                                        widget[i].grid.col);
                 widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
                 gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetInfo);
-                gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);\
+                gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
+
+                //Init of gridButton
+                widget[i].gridButton = gtk_grid_new();
+                gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].gridButton);
+
 
                 //Init of buttonEditWidget
                 widget[i].buttonEditWidget = gtk_button_new_with_label("📝");
-                gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonEditWidget);
+                gtk_grid_attach(GTK_GRID(widget[i].gridButton),widget[i].buttonEditWidget,0,0,1,2);
 
                 //Init of buttonDeleteWidget
                 widget[i].buttonDeleteWidget = gtk_button_new_with_label("✖️");
-                gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
+                gtk_grid_attach(GTK_GRID(widget[i].gridButton),widget[i].buttonDeleteWidget,1,0,1,2);
                 g_signal_connect(widget[i].buttonDeleteWidget,"clicked",G_CALLBACK(deleteWidget),GINT_TO_POINTER(i));
             }
         }
