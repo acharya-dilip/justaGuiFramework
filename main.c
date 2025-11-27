@@ -56,6 +56,7 @@ void exportGui();
 void declareWidgets();
 void updateAddWidgets();
 void screenEdit(GtkButton *button, gpointer user_data);
+void updateScreenAddWidgets();
 
 
 
@@ -458,6 +459,15 @@ void  registerWidget() {
         g_signal_connect(buttonExportGui,"clicked",G_CALLBACK(exportGui),NULL);
         gtk_widget_set_size_request(buttonExportGui,400,-1);
     }
+
+    void updateScreenAddWidgets() {
+
+    }
+
+
+
+
+
     void declareWidgetLabels() {
         //Removes the old widgets
         GtkWidget *child;
