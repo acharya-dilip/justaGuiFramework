@@ -55,6 +55,11 @@ void screenWindowChild();
 void exportGui();
 void declareWidgets();
 void updateAddWidgets();
+void screenEdit(GtkButton *button, gpointer user_data);
+
+
+
+
 //Glovbized Varuables
 GtkWidget *windowAddWidget;
 GtkWidget *entryWidgetName;
@@ -410,6 +415,14 @@ void  registerWidget() {
             }
         }
     }
+
+
+    void screenEdit(GtkButton *button, gpointer user_data) {
+
+    }
+
+
+
     //Overrites the widget that is to be deleted with the succeeding widget and soon
     void deleteWidget(GtkButton *button, gpointer user_data){
         int i = GPOINTER_TO_INT(user_data);
