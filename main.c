@@ -9,6 +9,8 @@ struct widgets{
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
     GtkWidget *buttonDeleteWidget;
+    GtkWidget *buttonEditWidget;
+
     struct label{
         char label[100];
     }label;
@@ -392,7 +394,7 @@ void  registerWidget() {
                 gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
 
                 //Init of buttonDeleteWidget
-                widget[i].buttonDeleteWidget = gtk_button_new_with_label("❌");
+                widget[i].buttonDeleteWidget = gtk_button_new_with_label("✖️");
                 gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].buttonDeleteWidget);
                 g_signal_connect(widget[i].buttonDeleteWidget,"clicked",G_CALLBACK(deleteWidget),GINT_TO_POINTER(i));
             }
