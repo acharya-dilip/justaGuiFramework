@@ -419,7 +419,7 @@ void  registerWidget() {
         FILE *file2 = fopen("ExportedGui/build/WidgetDocumentation.txt","w");
         fprintf(file2,"S.N. \t Widget Name \t Widget Type \t Row \t Row Span \t Column \t Column Span \t Min Width \t Min Height \t Margin Top \t Margin Bottom \t Margin Start \t Margin End \n");
         for (int i =0; i<widgetCount;i++) {
-            fprintf(file2,"%d \t %s \t %s \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d ",
+            fprintf(file2,"%d \t %s \t %s \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \t %d \n",
                 i+1,
                 widget[i].widgetName,
                 widget[i].type.widgetTypeName,
