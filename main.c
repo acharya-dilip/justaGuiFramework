@@ -167,7 +167,7 @@ void screenAddWidget() {
     listWidgets = gtk_string_list_new(widgetList);
     dropdownWidgets = gtk_drop_down_new(G_LIST_MODEL (listWidgets), NULL);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),dropdownWidgets,8,0,2,1);
-    g_signal_connect(listWidgets,"notify::selected",G_CALLBACK(updateScreenAddWidgets),NULL);
+    g_signal_connect(dropdownWidgets,"notify::selected",G_CALLBACK(updateScreenAddWidgets),NULL);
 
 
     //Init of entrylabel
@@ -355,7 +355,7 @@ void screenAddWidget() {
 
 
 void updateScreenAddWidgets() {
-
+    printf("updateScreenAddWidgets() is executing");
 }
 
 
