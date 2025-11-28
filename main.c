@@ -75,6 +75,7 @@ GtkAdjustment *defaultAdjustmentMarginTop;
 GtkAdjustment *defaultAdjustmentMarginBottom;
 //Globalised variables
 GtkWidget *windowChild;
+GtkWidget *gridParentWidgets;
 void screenWindowChild() {
     //Init of windowChild
     windowChild = gtk_window_new();
@@ -145,8 +146,28 @@ void screenAddWidget() {
     gtk_window_present(GTK_WINDOW(windowAddWidget));
 
 
-    //Init of gridParentWidgets
-    GtkWidget *gridParentWidgets = gtk_grid_new();
+
+
+
+
+    //Init of buttonAddWidget
+    GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
+    gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
+    g_signal_connect(buttonRegisterWidget,"clicked",G_CALLBACK(registerWidget),NULL);
+    //Margins & Paddings
+    gtk_widget_set_margin_top(buttonRegisterWidget,10);
+
+
+
+
+
+}
+
+
+void updateScreenAddWidgets() {
+    printf("updateScreenAddWidgets() is executing");
+     //Init of gridParentWidgets
+    gridParentWidgets = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowAddWidget),gridParentWidgets);
     //Margins & Paddings
     gtk_widget_set_margin_top(gridParentWidgets,10);
@@ -337,25 +358,6 @@ void screenAddWidget() {
     spinbuttonMarginBottom = gtk_spin_button_new(defaultAdjustmentMarginBottom ,1,0);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),spinbuttonMarginBottom,7,9,3,1);
     gtk_widget_set_margin_top(spinbuttonMarginBottom,4);
-
-
-
-    //Init of buttonAddWidget
-    GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
-    gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
-    g_signal_connect(buttonRegisterWidget,"clicked",G_CALLBACK(registerWidget),NULL);
-    //Margins & Paddings
-    gtk_widget_set_margin_top(buttonRegisterWidget,10);
-
-
-
-
-
-}
-
-
-void updateScreenAddWidgets() {
-    printf("updateScreenAddWidgets() is executing");
 }
 
 
