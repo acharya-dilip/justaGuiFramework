@@ -57,7 +57,7 @@ void declareWidgets();
 void updateAddWidgets();
 void screenEdit(GtkButton *button, gpointer user_data);
 void updateScreenAddWidgets();
-
+void editWidget();
 
 
 
@@ -473,7 +473,9 @@ void  registerWidget() {
     }
 
 
+    void editWidget() {
 
+    }
 
 
 
