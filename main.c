@@ -473,7 +473,8 @@ void  registerWidget() {
     }
 
 
-    void editWidget() {
+    void editWidget(GtkButton *button, gpointer user_data) {
+        int i = GPOINTER_TO_INT(user_data);
 
     }
 
@@ -516,7 +517,7 @@ void  registerWidget() {
                 //Init of buttonEditWidget
                 widget[i].buttonEditWidget = gtk_button_new_with_label("📝");
                 gtk_grid_attach(GTK_GRID(widget[i].gridButton),widget[i].buttonEditWidget,0,0,1,2);
-                g_signal_connect(widget[i].buttonEditWidget,"clicked",G_CALLBACK(editWidget),NULL);
+                g_signal_connect(widget[i].buttonEditWidget,"clicked",G_CALLBACK(editWidget),GINT_TO_POINTER(i);
 
                 //Init of buttonDeleteWidget
                 widget[i].buttonDeleteWidget = gtk_button_new_with_label("✖️");
