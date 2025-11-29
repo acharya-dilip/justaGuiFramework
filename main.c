@@ -56,7 +56,7 @@ void exportGui();
 void declareWidgets();
 void updateAddWidgets();
 void screenEdit(GtkButton *button, gpointer user_data);
-void updateScreenAddWidgets();
+void updateScreenAddWidgets(GtkWidget *window);
 void editWidget(GtkButton *button, gpointer user_data);
 
 
@@ -99,7 +99,6 @@ void screenWindowChild() {
 }
 
 //Glovbized Varuables
-GtkWidget *windowAddWidget;
 GtkWidget *entryWidgetName;
 GtkWidget *dropdownWidgets;
 GtkWidget *spinbuttonGridPlacementRow;
@@ -115,6 +114,7 @@ GtkWidget *spinbuttonMarginBottom;
 GtkWidget *entryLabel;
 const char *widgetList[]={"Button","Label","Entry","T.View",NULL};
 GtkStringList *listWidgets;
+GtkWidget *windowAddWidget;
 void screenAddWidget() {
 
 
@@ -128,7 +128,7 @@ void screenAddWidget() {
 
 
 
-    updateScreenAddWidgets();
+    updateScreenAddWidgets(windowAddWidget);
 
 
     //Init of buttonAddWidget
@@ -138,17 +138,13 @@ void screenAddWidget() {
     //Margins & Paddings
     gtk_widget_set_margin_top(buttonRegisterWidget,10);
 
-
-
-
-
 }
 
 
 //test
 
 
-void updateScreenAddWidgets() {
+void updateScreenAddWidgets(GtkWidget *window) {
     printf("updateScreenAddWidgets() is executing");
 
     //Init of defaultAdjustment
@@ -165,7 +161,7 @@ void updateScreenAddWidgets() {
 
      //Init of gridParentWidgets
     gridParentWidgets = gtk_grid_new();
-    gtk_window_set_child(GTK_WINDOW(windowAddWidget),gridParentWidgets);
+    gtk_window_set_child(GTK_WINDOW(window),gridParentWidgets);
     //Margins & Paddings
     gtk_widget_set_margin_top(gridParentWidgets,10);
     gtk_widget_set_margin_bottom(gridParentWidgets,10);
