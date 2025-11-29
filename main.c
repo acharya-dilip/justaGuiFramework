@@ -56,7 +56,7 @@ void exportGui();
 void declareWidgets();
 void updateAddWidgets();
 void screenEdit(GtkButton *button, gpointer user_data);
-void updateScreenAddWidgets(GtkWidget *window);
+void widgetAttributeWidgets(GtkWidget *window);
 void editWidget(GtkButton *button, gpointer user_data);
 
 
@@ -128,7 +128,7 @@ void screenAddWidget() {
 
 
 
-    updateScreenAddWidgets(windowAddWidget);
+    widgetAttributeWidgets(windowAddWidget);
 
 
     //Init of buttonAddWidget
@@ -144,7 +144,7 @@ void screenAddWidget() {
 //test
 
 
-void updateScreenAddWidgets(GtkWidget *window) {
+void widgetAttributeWidgets(GtkWidget *window) {
     printf("updateScreenAddWidgets() is executing");
 
     //Init of defaultAdjustment
@@ -181,7 +181,7 @@ void updateScreenAddWidgets(GtkWidget *window) {
     listWidgets = gtk_string_list_new(widgetList);
     dropdownWidgets = gtk_drop_down_new(G_LIST_MODEL (listWidgets), NULL);
     gtk_grid_attach(GTK_GRID(gridParentWidgets),dropdownWidgets,8,0,2,1);
-    g_signal_connect(dropdownWidgets,"notify::selected",G_CALLBACK(updateScreenAddWidgets),NULL);
+    g_signal_connect(dropdownWidgets,"notify::selected",G_CALLBACK(widgetAttributeWidgets),NULL);
 
 
     //Init of entrylabel
