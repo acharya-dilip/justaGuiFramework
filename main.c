@@ -526,6 +526,9 @@ void editWidget(GtkButton *button, gpointer user_data) {
         gtk_window_set_title(GTK_WINDOW(windowEditWidget),"Edit Widget");
         gtk_window_set_default_size(GTK_WINDOW(windowEditWidget),400,500);
         gtk_window_present(GTK_WINDOW(windowEditWidget));
+
+        widgetAttributeWidgets(windowEditWidget);
+
     }
 
 
