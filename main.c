@@ -5,6 +5,7 @@ struct widgets{
     char widgetName[100];
     GtkWidget *widget;
     //For the display thing
+    GtkGesture *gestureFrame;
     GtkWidget *placeholderLabel;
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
@@ -507,9 +508,9 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 gtk_widget_set_size_request(widget[i].frameWidgetLabel,380,50);
 
                 //Init of gestureFrame
-                GtkGesture *gestureFrame = gtk_gesture_click_new();
-                g_signal_connect(gestureFrame, "pressed", G_CALLBACK(screenWidgetInfo), GINT_TO_POINTER(i));
-                gtk_widget_add_controller(widget[i].frameWidgetLabel, GTK_EVENT_CONTROLLER(gestureFrame));
+                widget[i].gestureFrame = gtk_gesture_click_new();
+                g_signal_connect(widget[i].gestureFrame, "pressed", G_CALLBACK(screenWidgetInfo), GINT_TO_POINTER(i));
+                gtk_widget_add_controller(widget[i].frameWidgetLabel, GTK_EVENT_CONTROLLER(widget[i].gestureFrame));
 
                 //init of gridChildBox
                 widget[i].gridChildBox=gtk_grid_new();
@@ -554,7 +555,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
 
     void screenWidgetInfo(GtkWidget *IaintGonUsethis, gpointer user_data) {
         int i = GPOINTER_TO_INT(user_data);
-        printf("THIS SCREENWIDGETINFO FUNCT IS EXECUTED");
+        printf("\n THIS SCREENWIDGETINFO FUNCT IS EXECUTED %d",i);
     }
 
 
