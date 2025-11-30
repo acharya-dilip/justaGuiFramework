@@ -375,56 +375,56 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     int i = GPOINTER_TO_INT(user_data);
 
     //Function to hold all the logic for when the buttonRegister
-    widget[widgetCount].isOccupied = 1;
-    strcpy(widget[widgetCount].widgetName,gtk_editable_get_text(GTK_EDITABLE(entryWidgetName)));
+    widget[i].isOccupied = 1;
+    strcpy(widget[i].widgetName,gtk_editable_get_text(GTK_EDITABLE(entryWidgetName)));
     const char *widgetType = gtk_string_list_get_string(GTK_STRING_LIST(listWidgets), gtk_drop_down_get_selected(GTK_DROP_DOWN(dropdownWidgets)));
-    strcpy(widget[widgetCount].type.widgetTypeName,widgetType);
-    if(strcmp(widget[widgetCount].type.widgetTypeName,"Button")==0){
-        strcpy(widget[widgetCount].label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
-        widget[widgetCount].type.isButton = 1;
+    strcpy(widget[i].type.widgetTypeName,widgetType);
+    if(strcmp(widget[i].type.widgetTypeName,"Button")==0){
+        strcpy(widget[i].label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        widget[i].type.isButton = 1;
     }
     else if(strcmp(widgetType,"Label")==0){
-        strcpy(widget[widgetCount].label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
-        widget[widgetCount].type.isLabel = 1;
+        strcpy(widget[i].label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        widget[i].type.isLabel = 1;
     }
     else if(strcmp(widgetType,"Entry")==0) {
-        widget[widgetCount].type.isEntry = 1;
+        widget[i].type.isEntry = 1;
         if (strcmp(gtk_editable_get_text(GTK_EDITABLE(entryLabel)),"")!=0){
-            strcpy(widget[widgetCount].entry.placeholderText,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
-            widget[widgetCount].entry.hasPlaceHolderText = 1;
+            strcpy(widget[i].entry.placeholderText,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+            widget[i].entry.hasPlaceHolderText = 1;
         }
     }else if(strcmp(widgetType,"T.View")==0){
-        widget[widgetCount].type.isTextView = 1;
+        widget[i].type.isTextView = 1;
     }
-        widget[widgetCount].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
-        widget[widgetCount].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
-        widget[widgetCount].grid.rowSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRowSpan));
-        widget[widgetCount].grid.colSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumnSpan));
+        widget[i].grid.row = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRow));
+        widget[i].grid.col = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumn));
+        widget[i].grid.rowSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementRowSpan));
+        widget[i].grid.colSpan = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonGridPlacementColumnSpan));
     //Checks if colspan and rowspan is 0 or less and defaults the value to -1 if that's the case
-        if (widget[widgetCount].grid.rowSpan<=0 && widget[widgetCount].grid.colSpan<=0) {
-            widget[widgetCount].grid.rowSpan=1;
-            widget[widgetCount].grid.colSpan=1;
-        }else if (widget[widgetCount].grid.rowSpan<=0) {
-            widget[widgetCount].grid.rowSpan=1;
-        }else if (widget[widgetCount].grid.colSpan<=0) {
-            widget[widgetCount].grid.colSpan=1;
+        if (widget[i].grid.rowSpan<=0 && widget[i].grid.colSpan<=0) {
+            widget[i].grid.rowSpan=1;
+            widget[i].grid.colSpan=1;
+        }else if (widget[i].grid.rowSpan<=0) {
+            widget[i].grid.rowSpan=1;
+        }else if (widget[i].grid.colSpan<=0) {
+            widget[i].grid.colSpan=1;
         }
-        widget[widgetCount].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
-        widget[widgetCount].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
+        widget[i].minSize.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinHeight));
+        widget[i].minSize.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMinWidth));
         //checks if min height or width is 0 or less if so defaults it to -1
-        if (widget[widgetCount].minSize.height<=0 && widget[widgetCount].minSize.width<=0) {
-            widget[widgetCount].minSize.height=-1;
-            widget[widgetCount].minSize.width=-1;
-        }else if (widget[widgetCount].minSize.height<=0) {
-            widget[widgetCount].minSize.height=-1;
-        }else if (widget[widgetCount].minSize.width<=0) {
-            widget[widgetCount].minSize.width=-1;
+        if (widget[i].minSize.height<=0 && widget[i].minSize.width<=0) {
+            widget[i].minSize.height=-1;
+            widget[i].minSize.width=-1;
+        }else if (widget[i].minSize.height<=0) {
+            widget[i].minSize.height=-1;
+        }else if (widget[i].minSize.width<=0) {
+            widget[i].minSize.width=-1;
         }
         //Reads and stores the margin values
-        widget[widgetCount].margin.top = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginTop));
-        widget[widgetCount].margin.bottom = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginBottom));
-        widget[widgetCount].margin.start = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginStart));
-        widget[widgetCount].margin.end = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginEnd));
+        widget[i].margin.top = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginTop));
+        widget[i].margin.bottom = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginBottom));
+        widget[i].margin.start = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginStart));
+        widget[i].margin.end = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spinbuttonMarginEnd));
         //Increases the widgetCount as more widgets are added
         widgetCount++;
         gtk_window_destroy(GTK_WINDOW(windowAddWidget));
