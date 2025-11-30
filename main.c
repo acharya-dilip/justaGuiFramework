@@ -504,7 +504,7 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         gtk_file_dialog_open(dialog, NULL, NULL, on_file_selected, NULL);
     }
     void readWidgetData(char *filepath) {
-            FILE *file = fopen("widget.data","r");
+            FILE *file = fopen(filepath,"r");
             fread(&widgetCount, sizeof(widgetCount), 1, file);
             fread(&widget,sizeof(widget),widgetCount,file);
             fclose(file);
