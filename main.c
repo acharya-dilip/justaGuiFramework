@@ -630,6 +630,10 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         //Init of gridExportGui
         GtkWidget *gridExportGui = gtk_grid_new();
         gtk_window_set_child(GTK_WINDOW(windowExportGui),gridExportGui);
+        gtk_widget_set_halign(gridExportGui,GTK_ALIGN_CENTER);
+        gtk_widget_set_valign(gridExportGui, GTK_ALIGN_CENTER);
+
+
 
     }
 
