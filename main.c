@@ -498,9 +498,14 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
         for (int i=0; i < widgetCount; i++) {
             //checks if the widget is occupied
             if (widget[i].isOccupied==1){
+
                 //Init of boxWidgetInfo
                 widget[i].buttonWidgetLabel = gtk_button_new();
                 gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].buttonWidgetLabel,0,i,1,1);
+
+                //init of gridChildBox
+                widget[i].gridChildBox=gtk_grid_new();
+                gtk_button_set_child(GTK_BUTTON(widget[i].buttonWidgetLabel),widget[i].gridChildBox);
 
                 //init of labelWidgetinfo
                 char widgetInfo[200];
@@ -512,9 +517,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                                                        widget[i].grid.row,
                                                        widget[i].grid.col);
                 widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
-                //init of gridChildBox
-                widget[i].gridChildBox=gtk_grid_new();
-                gtk_button_set_child(GTK_BUTTON(widget[i].buttonWidgetLabel),widget[i].gridChildBox);
+                gtk_grid_attach(GTK_GRID(widget[i].gridChildBox),widget[i].labelWidgetInfo,0,0,8,1);
 
                 //Init of buttonEditWidget
                 widget[i].buttonEditWidget = gtk_button_new_with_label("📝");
