@@ -521,12 +521,14 @@ void  registerWidget() {
 
 void editWidget(GtkButton *button, gpointer user_data) {
         int i = GPOINTER_TO_INT(user_data);
-
+        //Init of windowEditWidget
+        GtkWidget *windowEditWidget = gtk_window_new();
+        gtk_window_set_title(GTK_WINDOW(windowEditWidget),"Edit Widget");
+        gtk_window_set_default_size(GTK_WINDOW(windowEditWidget),400,500);
+        gtk_window_present(GTK_WINDOW(windowEditWidget));
     }
 
-    void screenEdit(GtkButton *button, gpointer user_data) {
 
-    }
 
 
 
