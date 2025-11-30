@@ -52,6 +52,7 @@ void declareWidgets();
 void widgetAttributeWidgets(GtkWidget *window, int i);
 void editWidget(GtkButton *button, gpointer user_data);
 void importGui();
+void readWidgetData();
 
 
 
@@ -487,6 +488,9 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
         gtk_widget_set_size_request(buttonExportGui,400,-1);
     }
 
+
+
+
 void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
 
         GtkFileDialog *dialog = GTK_FILE_DIALOG(source);
@@ -503,7 +507,9 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         gtk_file_dialog_open(dialog, NULL, NULL, on_file_selected, NULL);
     }
 
+    void readWidgetData() {
 
+    }
 
 
 
