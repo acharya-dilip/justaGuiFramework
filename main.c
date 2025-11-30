@@ -5,6 +5,7 @@ struct widgets{
     char widgetName[100];
     GtkWidget *widget;
     //For the display thing
+    GtkWidget *placeholderLabel;
     GtkWidget *buttonWidgetLabel;
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
@@ -508,6 +509,11 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 widget[i].gridChildBox=gtk_grid_new();
                 gtk_button_set_child(GTK_BUTTON(widget[i].buttonWidgetLabel),widget[i].gridChildBox);
 
+                //init of placeholderLabel
+                widget[i].placeholderLabel = gtk_label_new("");
+                gtk_grid_attach(GTK_GRID(widget[i].gridChildBox),widget[i].placeholderLabel,0,0,10,1);
+                gtk_widget_set_size_request(widget[i].placeholderLabel,380,-1);
+
                 //init of labelWidgetinfo
                 char widgetInfo[200];
                 snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
@@ -518,12 +524,13 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                                                        widget[i].grid.row,
                                                        widget[i].grid.col);
                 widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
-                gtk_grid_attach(GTK_GRID(widget[i].gridChildBox),widget[i].labelWidgetInfo,0,0,8,1);
+                gtk_grid_attach(GTK_GRID(widget[i].gridChildBox),widget[i].labelWidgetInfo,0,0,1,1);
 
                 //Init of buttonEditWidget
                 widget[i].buttonEditWidget = gtk_button_new_with_label("📝");
                 g_signal_connect(widget[i].buttonEditWidget,"clicked",G_CALLBACK(editWidget),GINT_TO_POINTER(i));
                 gtk_grid_attach(GTK_GRID(widget[i].gridChildBox),widget[i].buttonEditWidget,9,0,1,1);
+                gtk_widget_set_halign(widget[i].buttonEditWidget,GTK_ALIGN_END);
 
                 //Init of buttonDeleteWidget
                 widget[i].buttonDeleteWidget = gtk_button_new_with_label("✖️");
