@@ -501,7 +501,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 //Init of boxWidgetInfo
                 widget[i].buttonWidgetLabel = gtk_button_new();
                 gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].buttonWidgetLabel,0,i,1,1);
-                gtk_widget_set_size_request(widget[i].buttonWidgetLabel,380,-1);
+
                 //init of labelWidgetinfo
                 char widgetInfo[200];
                 snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
@@ -511,21 +511,16 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                                                        widget[i].type.widgetTypeName,
                                                        widget[i].grid.row,
                                                        widget[i].grid.col);
-                gtk_button_set_label(GTK_BUTTON(widget[i].buttonWidgetLabel),widgetInfo);
-
-                //Init of gridButton
-                widget[i].gridButton = gtk_grid_new();
-                gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].buttonWidgetLabel),widget[i].gridButton);
-
+                widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
 
                 //Init of buttonEditWidget
                 widget[i].buttonEditWidget = gtk_button_new_with_label("📝");
-                gtk_grid_attach(GTK_GRID(widget[i].gridButton),widget[i].buttonEditWidget,0,0,1,2);
+                gtk_grid_attach(GTK_GRID(widget[i].gridButton),widget[i].buttonEditWidget,9,i,1,1);
                 g_signal_connect(widget[i].buttonEditWidget,"clicked",G_CALLBACK(editWidget),GINT_TO_POINTER(i));
 
                 //Init of buttonDeleteWidget
                 widget[i].buttonDeleteWidget = gtk_button_new_with_label("✖️");
-                gtk_grid_attach(GTK_GRID(widget[i].gridButton),widget[i].buttonDeleteWidget,1,0,1,2);
+                gtk_grid_attach(GTK_GRID(widget[i].gridButton),widget[i].buttonDeleteWidget,10,i,1,1);
                 g_signal_connect(widget[i].buttonDeleteWidget,"clicked",G_CALLBACK(deleteWidget),GINT_TO_POINTER(i));
             }
         }
