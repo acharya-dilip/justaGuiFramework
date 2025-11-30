@@ -617,7 +617,16 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         }
         fclose(file2);
     }
+
+
     void exportGui() {
+
+        //Init of windowExportGui
+        GtkWidget *windowExportGui = gtk_window_new();
+        gtk_window_set_default_size(GTK_WINDOW(windowExportGui),200,200);
+        gtk_window_set_title(GTK_WINDOW(windowExportGui),"Export To:");
+        gtk_window_present(GTK_WINDOW(windowExportGui));
+
 
     }
 
