@@ -487,8 +487,20 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
         gtk_widget_set_size_request(buttonExportGui,400,-1);
     }
 
-    void importGui() {
+void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
 
+        GtkFileDialog *dialog = GTK_FILE_DIALOG(source);
+        GFile *file = gtk_file_dialog_open_finish(dialog, res, NULL);
+        char *filePath = g_file_get_path(file);
+        g_free(filePath);
+        g_object_unref(file);
+
+
+    }
+
+    void importGui() {
+        GtkFileDialog *dialog = gtk_file_dialog_new();
+        gtk_file_dialog_open(dialog, NULL, NULL, on_file_selected, NULL);
     }
 
 
