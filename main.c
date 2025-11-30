@@ -508,6 +508,7 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
             fread(&widgetCount, sizeof(widgetCount), 1, file);
             fread(&widget,sizeof(widget),widgetCount,file);
             fclose(file);
+        declareWidgetLabels();
     }
 
 
