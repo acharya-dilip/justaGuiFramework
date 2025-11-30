@@ -158,16 +158,16 @@ void widgetAttributeWidgets(GtkWidget *window,int i) {
     printf("updateScreenAddWidgets() is executing");
 
     //Init of defaultAdjustment
-    GtkAdjustment *defaultAdjustmentRow = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentColumn = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentRowSpan = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentColumnSpan = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentMinHeight = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentMinWidth = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentMarginStart = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentMarginEnd = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentMarginTop = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
-    GtkAdjustment *defaultAdjustmentMarginBottom = gtk_adjustment_new(0.0, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentRow = gtk_adjustment_new(widget[i].grid.row, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentColumn = gtk_adjustment_new(widget[i].grid.col, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentRowSpan = gtk_adjustment_new(widget[i].grid.rowSpan, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentColumnSpan = gtk_adjustment_new(widget[i].grid.colSpan, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentMinHeight = gtk_adjustment_new(widget[i].minSize.height, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentMinWidth = gtk_adjustment_new(widget[i].minSize.width, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentMarginStart = gtk_adjustment_new(widget[i].margin.start, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentMarginEnd = gtk_adjustment_new(widget[i].margin.end, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentMarginTop = gtk_adjustment_new(widget[i].margin.top, 0.0, 1000.0, 1.0, 10.0, 0.0);
+    GtkAdjustment *defaultAdjustmentMarginBottom = gtk_adjustment_new(widget[i].margin.bottom, 0.0, 1000.0, 1.0, 10.0, 0.0);
 
      //Init of gridParentWidgets
     gridParentWidgets = gtk_grid_new();
