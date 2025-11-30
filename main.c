@@ -619,7 +619,6 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         fclose(file2);
     }
 
-//Globalised Variables
 GtkWidget *entryFilePath;
 void exportGui() {
 
@@ -658,6 +657,7 @@ void setFilePath(GObject *source, GAsyncResult *res, gpointer user_data) {
         GtkFileDialog *dialogNav = GTK_FILE_DIALOG(source);
         GFile *folder = gtk_file_dialog_select_folder_finish(dialogNav, res, NULL);
         char *path = g_file_get_path(folder);
+        strcpy(filepath,path);
         //Set the entryDir to the desired file path
         gtk_editable_set_text(GTK_EDITABLE(entryFilePath),path);
 
