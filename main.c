@@ -646,6 +646,7 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         //Init of buttonExport
         GtkWidget *buttonExport = gtk_button_new_with_label("Export");
         gtk_grid_attach(GTK_GRID(gridExportGui),buttonExport,0,1,21,1);
+        g_signal_connect(buttonExport,"clicked",G_CALLBACK(exportGuiData),NULL);
 
 
 
