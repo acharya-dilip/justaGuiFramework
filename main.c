@@ -627,6 +627,9 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         gtk_window_set_title(GTK_WINDOW(windowExportGui),"Export To:");
         gtk_window_present(GTK_WINDOW(windowExportGui));
 
+        //Init of gridExportGui
+        GtkWidget *gridExportGui = gtk_grid_new();
+        gtk_window_set_child(GTK_WINDOW(windowExportGui),gridExportGui);
 
     }
 
