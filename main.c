@@ -720,6 +720,15 @@ void navFolder() {
         GtkApplication *app= gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
         g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
         int status = g_application_run (G_APPLICATION (app), argc, argv);
+ GtkCssProvider *provider = gtk_css_provider_new();
+    gtk_css_provider_load_from_path(provider, "styles.css");
+
+    gtk_style_context_add_provider_for_display(
+        gdk_display_get_default(),
+        GTK_STYLE_PROVIDER(provider),
+        GTK_STYLE_PROVIDER_PRIORITY_USER
+    );
+
         g_object_unref (app);
         return status;
     }
