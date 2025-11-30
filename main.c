@@ -56,7 +56,7 @@ void exportGui();
 void declareWidgets();
 void updateAddWidgets();
 void screenEdit(GtkButton *button, gpointer user_data);
-void widgetAttributeWidgets(GtkWidget *window);
+void widgetAttributeWidgets(GtkWidget *window, int i);
 void editWidget(GtkButton *button, gpointer user_data);
 
 
@@ -128,7 +128,7 @@ void screenAddWidget() {
 
 
 
-    widgetAttributeWidgets(windowAddWidget);
+    widgetAttributeWidgets(windowAddWidget,widgetCount);
 
 
     //Init of buttonAddWidget
@@ -141,10 +141,20 @@ void screenAddWidget() {
 }
 
 
-//test
+void editWidget(GtkButton *button, gpointer user_data) {
+    int i = GPOINTER_TO_INT(user_data);
+    //Init of windowEditWidget
+    GtkWidget *windowEditWidget = gtk_window_new();
+    gtk_window_set_title(GTK_WINDOW(windowEditWidget),"Edit Widget");
+    gtk_window_set_default_size(GTK_WINDOW(windowEditWidget),400,500);
+    gtk_window_present(GTK_WINDOW(windowEditWidget));
+
+    widgetAttributeWidgets(windowEditWidget,i);
+
+}
 
 
-void widgetAttributeWidgets(GtkWidget *window) {
+void widgetAttributeWidgets(GtkWidget *window,int i) {
     printf("updateScreenAddWidgets() is executing");
 
     //Init of defaultAdjustment
@@ -519,17 +529,7 @@ void  registerWidget() {
         }
     }
 
-void editWidget(GtkButton *button, gpointer user_data) {
-        int i = GPOINTER_TO_INT(user_data);
-        //Init of windowEditWidget
-        GtkWidget *windowEditWidget = gtk_window_new();
-        gtk_window_set_title(GTK_WINDOW(windowEditWidget),"Edit Widget");
-        gtk_window_set_default_size(GTK_WINDOW(windowEditWidget),400,500);
-        gtk_window_present(GTK_WINDOW(windowEditWidget));
 
-        widgetAttributeWidgets(windowEditWidget);
-
-    }
 
 
 
