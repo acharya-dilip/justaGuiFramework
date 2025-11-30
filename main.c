@@ -473,9 +473,15 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
         //Init of gridScrolledWindow
         gridWidgets = gtk_grid_new();
         gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(scrolledWindowWidgets),gridWidgets);
+
+        //Init of buttonImportGui
+        GtkWidget *buttonImportGui = gtk_button_new_with_label("Import");
+        gtk_grid_attach(GTK_GRID(gridParent),buttonImportGui,0,12,10,1);
+        gtk_widget_set_size_request(buttonImportGui,400,-1);
+
         //Init of buttonExportGui
         GtkWidget *buttonExportGui = gtk_button_new_with_label("Export");
-        gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,12,10,1);
+        gtk_grid_attach(GTK_GRID(gridParent),buttonExportGui,0,13,10,1);
         g_signal_connect(buttonExportGui,"clicked",G_CALLBACK(exportGui),NULL);
         gtk_widget_set_size_request(buttonExportGui,400,-1);
     }
