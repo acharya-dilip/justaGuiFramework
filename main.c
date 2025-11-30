@@ -5,7 +5,7 @@ struct widgets{
     char widgetName[100];
     GtkWidget *widget;
     //For the display thing
-    GtkWidget *boxWidgetInfo;
+    GtkWidget *buttonWidgetLabel;
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
     GtkWidget *gridButton;
@@ -435,8 +435,6 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
 
 
 
-
-
     //Globalization of variables
     GtkWidget *scrolledWindowWidgets;
     GtkWidget *gridWidgets;
@@ -501,10 +499,9 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
             //checks if the widget is occupied
             if (widget[i].isOccupied==1){
                 //Init of boxWidgetInfo
-                widget[i].boxWidgetInfo = gtk_center_box_new();
-                gtk_orientable_set_orientation(GTK_ORIENTABLE(widget[i].boxWidgetInfo),GTK_ORIENTATION_HORIZONTAL);
-                gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].boxWidgetInfo,0,i,1,1);
-                gtk_widget_set_size_request(widget[i].boxWidgetInfo,380,-1);
+                widget[i].buttonWidgetLabel = gtk_button_new();
+                gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].buttonWidgetLabel,0,i,1,1);
+                gtk_widget_set_size_request(widget[i].buttonWidgetLabel,380,-1);
                 //init of labelWidgetinfo
                 char widgetInfo[200];
                 snprintf(widgetInfo,sizeof(widgetInfo),"%s \n"
@@ -514,13 +511,11 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                                                        widget[i].type.widgetTypeName,
                                                        widget[i].grid.row,
                                                        widget[i].grid.col);
-                widget[i].labelWidgetInfo = gtk_label_new(widgetInfo);
-                gtk_center_box_set_start_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].labelWidgetInfo);
-                gtk_widget_set_halign(widget[i].labelWidgetInfo,GTK_ALIGN_START);
+                gtk_button_set_label(GTK_BUTTON(widget[i].buttonWidgetLabel),widgetInfo);
 
                 //Init of gridButton
                 widget[i].gridButton = gtk_grid_new();
-                gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].boxWidgetInfo),widget[i].gridButton);
+                gtk_center_box_set_end_widget(GTK_CENTER_BOX(widget[i].buttonWidgetLabel),widget[i].gridButton);
 
 
                 //Init of buttonEditWidget
@@ -580,6 +575,9 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
         }
     fclose(file2);
     }
+
+
+
     //Declares the widget in the struct according to the information and configurations provided
     void declareWidgets() {
         //Sets the widgets as null
@@ -609,6 +607,9 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
             gtk_widget_set_margin_end(widget[j].widget,widget[j].margin.end);
         }
     }
+
+
+
     int main(int argc, char **argv) {
         GtkApplication *app= gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
         g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
