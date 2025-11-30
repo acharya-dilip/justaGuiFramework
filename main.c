@@ -508,7 +508,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
 
                 //Init of gestureFrame
                 GtkGesture *gestureFrame = gtk_gesture_click_new();
-                g_signal_connect(gestureFrame, "pressed", G_CALLBACK(screenWidgetInfo), NULL);
+                g_signal_connect(gestureFrame, "pressed", G_CALLBACK(screenWidgetInfo), GINT_TO_POINTER(i));
                 gtk_widget_add_controller(widget[i].frameWidgetLabel, GTK_EVENT_CONTROLLER(gestureFrame));
 
                 //init of gridChildBox
@@ -553,6 +553,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
 
 
     void screenWidgetInfo(GtkWidget *IaintGonUsethis, gpointer user_data) {
+        int i = GPOINTER_TO_INT(user_data);
         printf("THIS SCREENWIDGETINFO FUNCT IS EXECUTED");
     }
 
