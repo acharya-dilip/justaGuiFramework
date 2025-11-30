@@ -529,7 +529,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 //Init of buttonEditWidget
                 widget[i].buttonEditWidget = gtk_button_new_with_label("📝");
                 g_signal_connect(widget[i].buttonEditWidget,"clicked",G_CALLBACK(editWidget),GINT_TO_POINTER(i));
-                gtk_grid_attach(GTK_GRID(widget[i].gridChildBox),widget[i].buttonEditWidget,9,0,1,1);
+                gtk_grid_attach(GTK_GRID(widget[i].gridChildBox),widget[i].buttonEditWidget,8,0,1,1);
                 gtk_widget_set_halign(widget[i].buttonEditWidget,GTK_ALIGN_END);
 
                 //Init of buttonDeleteWidget
