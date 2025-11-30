@@ -9,7 +9,7 @@ struct widgets{
     GtkWidget *buttonWidgetLabel;
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
-    GtkWidget *gridButton;
+    GtkWidget *frameWidgetLabel;
     GtkWidget *buttonDeleteWidget;
     GtkWidget *buttonEditWidget;
 
@@ -503,9 +503,16 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
             //checks if the widget is occupied
             if (widget[i].isOccupied==1){
 
-                //Init of boxWidgetInfo
+                //Init of frameWidgetLabel
+                widget[i].frameWidgetLabel = gtk_frame_new(NULL);
+                gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].frameWidgetLabel,0,i,1,1);
+                g_signal_connect(widget[i].frameWidgetLabel,"clicked",G_CALLBACK(screenWidgetInfo),NULL);
+                gtk_widget_set_size_request(widget[i].frameWidgetLabel,400,50);
+
+                //Init of buttonWidgetLabel
                 widget[i].buttonWidgetLabel = gtk_button_new();
                 gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].buttonWidgetLabel,0,i,1,1);
+                g_signal_connect(widget[i].buttonWidgetLabel,"clicked",G_CALLBACK(screenWidgetInfo),NULL);
                 gtk_widget_set_size_request(widget[i].buttonWidgetLabel,400,50);
 
                 //init of gridChildBox
