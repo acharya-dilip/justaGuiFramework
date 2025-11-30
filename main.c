@@ -633,6 +633,11 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         gtk_widget_set_halign(gridExportGui,GTK_ALIGN_CENTER);
         gtk_widget_set_valign(gridExportGui, GTK_ALIGN_CENTER);
 
+        //Init of entryFilePath
+        GtkWidget *entryFilePath = gtk_entry_new();
+        gtk_grid_attach(GTK_GRID(gridExportGui),entryFilePath,0,0,10,1);
+
+
 
 
     }
