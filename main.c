@@ -54,6 +54,7 @@ void updateAddWidgets();
 void screenEdit(GtkButton *button, gpointer user_data);
 void widgetAttributeWidgets(GtkWidget *window, int i);
 void editWidget(GtkButton *button, gpointer user_data);
+void screenWidgetInfo();
 
 
 
@@ -548,6 +549,9 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     }
 
 
+    void screenWidgetInfo() {
+        printf("THIS SCREENWIDGETINFO FUNCT IS EXECUTED");
+    }
 
 
 
