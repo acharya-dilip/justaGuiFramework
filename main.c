@@ -6,7 +6,6 @@ struct widgets{
     GtkWidget *widget;
     //For the display thing
     GtkWidget *placeholderLabel;
-    GtkWidget *buttonWidgetLabel;
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
     GtkWidget *frameWidgetLabel;
@@ -126,7 +125,6 @@ void screenAddWidget() {
 void editWidget(GtkButton *button, gpointer user_data) {
     int i = GPOINTER_TO_INT(user_data);
     //stops the main button's click signal from being broadcasted when pressing the sub button
-    g_signal_stop_emission_by_name(widget[i].buttonWidgetLabel, "clicked");
     //Init of windowEditWidget
     GtkWidget *windowEditWidget = gtk_window_new();
     gtk_window_set_title(GTK_WINDOW(windowEditWidget),"Edit Widget");
@@ -506,18 +504,16 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 //Init of frameWidgetLabel
                 widget[i].frameWidgetLabel = gtk_frame_new(NULL);
                 gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].frameWidgetLabel,0,i,1,1);
-                g_signal_connect(widget[i].frameWidgetLabel,"clicked",G_CALLBACK(screenWidgetInfo),NULL);
-                gtk_widget_set_size_request(widget[i].frameWidgetLabel,400,50);
+                gtk_widget_set_size_request(widget[i].frameWidgetLabel,380,50);
 
-                //Init of buttonWidgetLabel
-                widget[i].buttonWidgetLabel = gtk_button_new();
-                gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].buttonWidgetLabel,0,i,1,1);
-                g_signal_connect(widget[i].buttonWidgetLabel,"clicked",G_CALLBACK(screenWidgetInfo),NULL);
-                gtk_widget_set_size_request(widget[i].buttonWidgetLabel,400,50);
+                //Init of gestureFrame
+                GtkGesture *gestureFrame = gtk_gesture_click_new();
+                g_signal_connect(gestureFrame, "pressed", G_CALLBACK(screenWidgetInfo), NULL);
+                gtk_widget_add_controller(widget[i].frameWidgetLabel, GTK_EVENT_CONTROLLER(gestureFrame));
 
                 //init of gridChildBox
                 widget[i].gridChildBox=gtk_grid_new();
-                gtk_button_set_child(GTK_BUTTON(widget[i].buttonWidgetLabel),widget[i].gridChildBox);
+                gtk_frame_set_child(GTK_FRAME(widget[i].frameWidgetLabel),widget[i].gridChildBox);
 
                 //init of placeholderLabel
                 widget[i].placeholderLabel = gtk_label_new("");
@@ -568,7 +564,6 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     void deleteWidget(GtkButton *button, gpointer user_data){
         int i = GPOINTER_TO_INT(user_data);
         //stops the main button's click signal from being broadcasted when pressing the sub button
-        g_signal_stop_emission_by_name(widget[i].buttonWidgetLabel, "clicked");
         for (int j = i; j!=widgetCount ; j++) {
             widget[j] = widget[j+1];
         }
