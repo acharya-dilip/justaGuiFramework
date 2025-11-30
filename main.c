@@ -638,9 +638,14 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         GtkWidget *entryFilePath = gtk_entry_new();
         gtk_grid_attach(GTK_GRID(gridExportGui),entryFilePath,0,0,20,1);
         gtk_widget_set_size_request(entryFilePath,230,-1);
+
         //Init of buttonChoosePath
         GtkWidget *buttonChoosePath = gtk_button_new_with_label("📂");
-        gtk_grid_attach(GTK_GRID(gridExportGui),buttonChoosePath,21,0,1,1);
+        gtk_grid_attach(GTK_GRID(gridExportGui),buttonChoosePath,20,0,1,1);
+
+        //Init of buttonExport
+        GtkWidget *buttonExport = gtk_button_new_with_label("Export");
+        gtk_grid_attach(GTK_GRID(gridExportGui),buttonExport,0,1,21,1);
 
 
 
