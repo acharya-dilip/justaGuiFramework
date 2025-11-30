@@ -505,7 +505,6 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 gtk_widget_set_size_request(widget[i].frameWidgetLabel,380,50);
 
 
-
                 //init of gridChildBox
                 widget[i].gridChildBox=gtk_grid_new();
                 gtk_frame_set_child(GTK_FRAME(widget[i].frameWidgetLabel),widget[i].gridChildBox);
@@ -542,14 +541,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 gtk_widget_set_halign(widget[i].buttonDeleteWidget,GTK_ALIGN_START);
                 gtk_widget_set_valign(widget[i].buttonDeleteWidget,GTK_ALIGN_CENTER);
 
-                //Init of gestureFrame
-                widget[i].gestureFrame = gtk_gesture_click_new();
-                g_signal_connect(widget[i].gestureFrame, "pressed", G_CALLBACK(screenWidgetInfo), GINT_TO_POINTER(i));
-                gtk_widget_add_controller(widget[i].frameWidgetLabel, GTK_EVENT_CONTROLLER(widget[i].gestureFrame));
-                gtk_event_controller_set_propagation_phase(
-                GTK_EVENT_CONTROLLER(widget[i].gestureFrame),
-                GTK_PHASE_BUBBLE
-            );
+
 
             }
         }
