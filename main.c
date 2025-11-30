@@ -147,7 +147,7 @@ void editWidget(GtkButton *button, gpointer user_data) {
     widgetAttributeWidgets(windowEditWidget,i);
 
     //Init of buttonSaveEdit
-    GtkWidget *buttonSaveEdit = gtk_button_new_with_label("Add Widget");
+    GtkWidget *buttonSaveEdit = gtk_button_new_with_label("Save Changes");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonSaveEdit,0,20,10,1);
     g_signal_connect(buttonSaveEdit,"clicked",G_CALLBACK(registerWidget),GINT_TO_POINTER(i));
     //Margins & Paddings
