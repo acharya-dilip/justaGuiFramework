@@ -589,7 +589,7 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         widgetCount--;
     }
 
-    void exportGui() {
+    void exportGuiData() {
         //Writes the widget data in binary for other program to read
         FILE *file1 = fopen("ExportedGui/build/widget.data","w");
         fwrite(&widgetCount,sizeof(widgetCount),1,file1);
@@ -615,7 +615,10 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
                 widget[i].margin.start,
                 widget[i].margin.end);
         }
-    fclose(file2);
+        fclose(file2);
+    }
+    void exportGui() {
+
     }
 
 
