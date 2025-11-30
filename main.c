@@ -477,6 +477,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
         //Init of buttonImportGui
         GtkWidget *buttonImportGui = gtk_button_new_with_label("Import");
         gtk_grid_attach(GTK_GRID(gridParent),buttonImportGui,0,12,10,1);
+        g_signal_connect(buttonImportGui,"clicked",G_CALLBACK(importGui),NULL);
         gtk_widget_set_size_request(buttonImportGui,400,-1);
 
         //Init of buttonExportGui
