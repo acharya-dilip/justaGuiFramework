@@ -623,7 +623,7 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
 
         //Init of windowExportGui
         GtkWidget *windowExportGui = gtk_window_new();
-        gtk_window_set_default_size(GTK_WINDOW(windowExportGui),200,200);
+        gtk_window_set_default_size(GTK_WINDOW(windowExportGui),300,150);
         gtk_window_set_title(GTK_WINDOW(windowExportGui),"Export To:");
         gtk_window_present(GTK_WINDOW(windowExportGui));
 
@@ -633,9 +633,14 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         gtk_widget_set_halign(gridExportGui,GTK_ALIGN_CENTER);
         gtk_widget_set_valign(gridExportGui, GTK_ALIGN_CENTER);
 
+
         //Init of entryFilePath
         GtkWidget *entryFilePath = gtk_entry_new();
-        gtk_grid_attach(GTK_GRID(gridExportGui),entryFilePath,0,0,10,1);
+        gtk_grid_attach(GTK_GRID(gridExportGui),entryFilePath,0,0,20,1);
+        gtk_widget_set_size_request(entryFilePath,230,-1);
+        //Init of buttonChoosePath
+        GtkWidget *buttonChoosePath = gtk_button_new_with_label("📂");
+        gtk_grid_attach(GTK_GRID(gridExportGui),buttonChoosePath,21,0,1,1);
 
 
 
