@@ -555,7 +555,16 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
 
     void screenWidgetInfo(GtkGestureClick *gesture, int n_press, double x, double y, gpointer user_data) {
         int i = GPOINTER_TO_INT(user_data);
-        printf("\n THIS SCREENWIDGETINFO FUNCT IS EXECUTED %d",i);
+
+
+        //init of windowWidgetInfo
+        GtkWidget *windowWidgetInfo = gtk_window_new();
+        gtk_window_set_default_size(GTK_WINDOW(windowWidgetInfo),350,400);
+        gtk_window_set_title(GTK_WINDOW(windowWidgetInfo),"Widget Info");
+        gtk_window_present(GTK_WINDOW(windowWidgetInfo));
+
+
+
     }
 
 
