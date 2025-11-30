@@ -5,7 +5,7 @@ struct widgets{
     char widgetName[100];
     GtkWidget *widget;
     //For the display thing
-    GtkGesture *gestureFrame;
+    GtkWidget *buttonInfo;
     GtkWidget *placeholderLabel;
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
