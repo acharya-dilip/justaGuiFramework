@@ -183,6 +183,7 @@ void widgetAttributeWidgets(GtkWidget *window,int i) {
     entryWidgetName = gtk_entry_new();
     gtk_grid_attach(GTK_GRID(gridParentWidgets),entryWidgetName,0,0,8,1);
     gtk_entry_set_placeholder_text(GTK_ENTRY(entryWidgetName),"Enter Widget Name");
+    gtk_editable_set_text(GTK_EDITABLE(entryWidgetName),widget[i].widgetName);
     //Margins & Paddings
     gtk_widget_set_size_request(entryWidgetName,210,-1);
 
