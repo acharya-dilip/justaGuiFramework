@@ -43,7 +43,7 @@ struct widgets{
 }widget[100];
 int widgetCount;
 void screenAddWidget();
-void registerWidget();
+void registerWidget(int i);
 void declareWidgetLabels();
 void deleteWidget(GtkButton *button, gpointer user_data);
 void screenWindowChild();
@@ -362,7 +362,7 @@ void widgetAttributeWidgets(GtkWidget *window,int i) {
 
 
 //It registers/Inputs the values of the widgets and their properties in the widget struct
-void  registerWidget() {
+void  registerWidget(int i) {
     //Function to hold all the logic for when the buttonRegister
     widget[widgetCount].isOccupied = 1;
     strcpy(widget[widgetCount].widgetName,gtk_editable_get_text(GTK_EDITABLE(entryWidgetName)));
