@@ -124,6 +124,8 @@ void screenAddWidget() {
 
 void editWidget(GtkButton *button, gpointer user_data) {
     int i = GPOINTER_TO_INT(user_data);
+    //stops the main button's click signal from being broadcasted when pressing the sub button
+    g_signal_stop_emission_by_name(widget[i].buttonWidgetLabel, "clicked");
     //Init of windowEditWidget
     GtkWidget *windowEditWidget = gtk_window_new();
     gtk_window_set_title(GTK_WINDOW(windowEditWidget),"Edit Widget");
@@ -554,6 +556,8 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     //Overrites the widget that is to be deleted with the succeeding widget and soon
     void deleteWidget(GtkButton *button, gpointer user_data){
         int i = GPOINTER_TO_INT(user_data);
+        //stops the main button's click signal from being broadcasted when pressing the sub button
+        g_signal_stop_emission_by_name(widget[i].buttonWidgetLabel, "clicked");
         for (int j = i; j!=widgetCount ; j++) {
             widget[j] = widget[j+1];
         }
