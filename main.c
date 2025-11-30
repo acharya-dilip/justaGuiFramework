@@ -51,7 +51,7 @@ void exportGui();
 void declareWidgets();
 void widgetAttributeWidgets(GtkWidget *window, int i);
 void editWidget(GtkButton *button, gpointer user_data);
-
+void importGui();
 
 
 
@@ -486,7 +486,9 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
         gtk_widget_set_size_request(buttonExportGui,400,-1);
     }
 
+    void importGui() {
 
+    }
 
 
 
