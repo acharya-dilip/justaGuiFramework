@@ -125,7 +125,8 @@ void screenAddWidget() {
 
 void editWidget(GtkButton *button, gpointer user_data) {
     int i = GPOINTER_TO_INT(user_data);
-
+    //stops the gestureFrame click signal from being broadcasted when pressing the sub button
+    g_signal_stop_emission_by_name(widget[i].gestureFrame,"pressed");
     //Init of windowEditWidget
     GtkWidget *windowEditWidget = gtk_window_new();
     gtk_window_set_title(GTK_WINDOW(windowEditWidget),"Edit Widget");
@@ -507,10 +508,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].frameWidgetLabel,0,i,1,1);
                 gtk_widget_set_size_request(widget[i].frameWidgetLabel,380,50);
 
-                //Init of gestureFrame
-                widget[i].gestureFrame = gtk_gesture_click_new();
-                g_signal_connect(widget[i].gestureFrame, "pressed", G_CALLBACK(screenWidgetInfo), GINT_TO_POINTER(i));
-                gtk_widget_add_controller(widget[i].frameWidgetLabel, GTK_EVENT_CONTROLLER(widget[i].gestureFrame));
+
 
                 //init of gridChildBox
                 widget[i].gridChildBox=gtk_grid_new();
@@ -548,6 +546,15 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 gtk_widget_set_halign(widget[i].buttonDeleteWidget,GTK_ALIGN_START);
                 gtk_widget_set_valign(widget[i].buttonDeleteWidget,GTK_ALIGN_CENTER);
 
+                //Init of gestureFrame
+                widget[i].gestureFrame = gtk_gesture_click_new();
+                g_signal_connect(widget[i].gestureFrame, "pressed", G_CALLBACK(screenWidgetInfo), GINT_TO_POINTER(i));
+                gtk_widget_add_controller(widget[i].frameWidgetLabel, GTK_EVENT_CONTROLLER(widget[i].gestureFrame));
+                gtk_event_controller_set_propagation_phase(
+                GTK_EVENT_CONTROLLER(widget[i].gestureFrame),
+                GTK_PHASE_BUBBLE
+            );
+
             }
         }
     }
@@ -574,7 +581,8 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     //Overrites the widget that is to be deleted with the succeeding widget and soon
     void deleteWidget(GtkButton *button, gpointer user_data){
         int i = GPOINTER_TO_INT(user_data);
-
+        //stops the gestureFrame click signal from being broadcasted when pressing the sub button
+        g_signal_stop_emission_by_name(widget[i].gestureFrame,"pressed");
         for (int j = i; j!=widgetCount ; j++) {
             widget[j] = widget[j+1];
         }
