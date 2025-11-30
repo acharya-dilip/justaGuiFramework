@@ -52,7 +52,7 @@ void exportGui();
 void declareWidgets();
 void widgetAttributeWidgets(GtkWidget *window, int i);
 void editWidget(GtkButton *button, gpointer user_data);
-void screenWidgetInfo(GtkGestureClick *gesture, int n_press, double x, double y, gpointer user_data);
+void screenWidgetInfo(GtkButton *button, gpointer user_data);
 
 
 
@@ -528,7 +528,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
 
                 //Init of buttonInfo
                 widget[i].buttonInfo = gtk_button_new_with_label("ℹ️");
-                g_signal_connect(widget[i].buttonInfo,"clicked",G_CALLBACK(editWidget),GINT_TO_POINTER(i));
+                g_signal_connect(widget[i].buttonInfo,"clicked",G_CALLBACK(screenWidgetInfo),GINT_TO_POINTER(i));
                 gtk_grid_attach(GTK_GRID(widget[i].gridChildBox),widget[i].buttonInfo,0,0,1,1);
                 gtk_widget_set_valign(widget[i].buttonInfo,GTK_ALIGN_CENTER);
                 gtk_widget_set_halign(widget[i].buttonInfo,GTK_ALIGN_CENTER);
@@ -555,7 +555,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     }
 
 
-    void screenWidgetInfo(GtkGestureClick *gesture, int n_press, double x, double y, gpointer user_data) {
+    void screenWidgetInfo(GtkButton *button, gpointer user_data) {
         int i = GPOINTER_TO_INT(user_data);
 
 
