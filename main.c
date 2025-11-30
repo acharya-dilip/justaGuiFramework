@@ -369,11 +369,11 @@ void  registerWidget() {
     const char *widgetType = gtk_string_list_get_string(GTK_STRING_LIST(listWidgets), gtk_drop_down_get_selected(GTK_DROP_DOWN(dropdownWidgets)));
     strcpy(widget[widgetCount].type.widgetTypeName,widgetType);
     if(strcmp(widget[widgetCount].type.widgetTypeName,"Button")==0){
-        strcpy(widget[widgetCount].button.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        strcpy(widget[widgetCount].label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
         widget[widgetCount].type.isButton = 1;
     }
     else if(strcmp(widgetType,"Label")==0){
-        strcpy(widget[widgetCount].label.label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
+        strcpy(widget[widgetCount].label,gtk_editable_get_text(GTK_EDITABLE(entryLabel)));
         widget[widgetCount].type.isLabel = 1;
     }
     else if(strcmp(widgetType,"Entry")==0) {
@@ -580,9 +580,9 @@ void  registerWidget() {
         //This Part   actualy does the comparing and declaring
         for (int j = 0; j<widgetCount;j++) {
             if (widget[j].type.isButton==1) {
-                widget[j].widget = gtk_button_new_with_label(widget[j].button.label);
+                widget[j].widget = gtk_button_new_with_label(widget[j].label);
             }else if (widget[j].type.isLabel==1){
-                widget[j].widget = gtk_label_new(widget[j].label.label);
+                widget[j].widget = gtk_label_new(widget[j].label);
             }else if (widget[j].type.isTextView==1){
             widget[j].widget = gtk_text_view_new();
             }else if (widget[j].type.isEntry==1) {
