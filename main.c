@@ -54,7 +54,7 @@ void updateAddWidgets();
 void screenEdit(GtkButton *button, gpointer user_data);
 void widgetAttributeWidgets(GtkWidget *window, int i);
 void editWidget(GtkButton *button, gpointer user_data);
-void screenWidgetInfo(GtkWidget *IaintGonUsethis, gpointer user_data);
+void screenWidgetInfo(GtkGestureClick *gesture, int n_press, double x, double y, gpointer user_data);
 
 
 
@@ -553,7 +553,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     }
 
 
-    void screenWidgetInfo(GtkWidget *IaintGonUsethis, gpointer user_data) {
+    void screenWidgetInfo(GtkGestureClick *gesture, int n_press, double x, double y, gpointer user_data) {
         int i = GPOINTER_TO_INT(user_data);
         printf("\n THIS SCREENWIDGETINFO FUNCT IS EXECUTED %d",i);
     }
