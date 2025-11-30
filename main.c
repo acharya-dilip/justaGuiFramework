@@ -12,9 +12,7 @@ struct widgets{
     GtkWidget *buttonDeleteWidget;
     GtkWidget *buttonEditWidget;
 
-    struct label{
-        char label[100];
-    }label;
+    char label[100];
     struct grid {
         int row;
         int col;
@@ -32,9 +30,6 @@ struct widgets{
         int isLabel;
         int isTextView;
     }type;
-    struct button {
-        char label[100];
-    }button;
     struct entry {
         int hasPlaceHolderText;
         char placeholderText[100];
