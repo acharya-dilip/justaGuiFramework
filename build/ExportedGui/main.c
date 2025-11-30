@@ -11,9 +11,8 @@ struct widgets{
     GtkWidget *labelWidgetInfo;
     GtkWidget *buttonDeleteWidget;
 
-    struct label{
-        char label[100];
-    }label;
+    char label[100];
+
     struct grid {
         int row;
         int col;
@@ -31,9 +30,6 @@ struct widgets{
         int isLabel;
         int isTextView;
     }type;
-    struct button {
-        char label[100];
-    }button;
     struct entry {
         int hasPlaceHolderText;
         char placeholderText[100];
@@ -55,9 +51,9 @@ void declareWidgets() {
     }
     for (int j = 0; j<widgetCount;j++) {
         if (widget[j].type.isButton==1) {
-            widget[j].widget = gtk_button_new_with_label(widget[j].button.label);
+            widget[j].widget = gtk_button_new_with_label(widget[j].label);
         }else if (widget[j].type.isLabel==1){
-            widget[j].widget = gtk_label_new(widget[j].label.label);
+            widget[j].widget = gtk_label_new(widget[j].label);
         }else if (widget[j].type.isTextView==1){
             widget[j].widget = gtk_text_view_new();
         }else if (widget[j].type.isEntry==1) {
