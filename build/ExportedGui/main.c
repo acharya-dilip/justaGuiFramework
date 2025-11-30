@@ -4,15 +4,15 @@ struct widgets{
     int isOccupied;
     char widgetName[100];
     GtkWidget *widget;
-
     //For the display thing
-    GtkWidget *boxWidgetInfo;
+    GtkWidget *placeholderLabel;
     GtkWidget *gridChildBox;
     GtkWidget *labelWidgetInfo;
+    GtkWidget *frameWidgetLabel;
     GtkWidget *buttonDeleteWidget;
+    GtkWidget *buttonEditWidget;
 
     char label[100];
-
     struct grid {
         int row;
         int col;
