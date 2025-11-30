@@ -588,6 +588,7 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         declareWidgetLabels();
         widgetCount--;
     }
+    char filepath[200];
 
     void exportGuiData() {
         //Writes the widget data in binary for other program to read
