@@ -50,8 +50,6 @@ void deleteWidget(GtkButton *button, gpointer user_data);
 void screenWindowChild();
 void exportGui();
 void declareWidgets();
-void updateAddWidgets();
-void screenEdit(GtkButton *button, gpointer user_data);
 void widgetAttributeWidgets(GtkWidget *window, int i);
 void editWidget(GtkButton *button, gpointer user_data);
 void screenWidgetInfo(GtkGestureClick *gesture, int n_press, double x, double y, gpointer user_data);
@@ -125,8 +123,6 @@ void screenAddWidget() {
 
 void editWidget(GtkButton *button, gpointer user_data) {
     int i = GPOINTER_TO_INT(user_data);
-    //stops the gestureFrame click signal from being broadcasted when pressing the sub button
-    g_signal_stop_emission_by_name(widget[i].gestureFrame,"pressed");
     //Init of windowEditWidget
     GtkWidget *windowEditWidget = gtk_window_new();
     gtk_window_set_title(GTK_WINDOW(windowEditWidget),"Edit Widget");
@@ -581,8 +577,6 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     //Overrites the widget that is to be deleted with the succeeding widget and soon
     void deleteWidget(GtkButton *button, gpointer user_data){
         int i = GPOINTER_TO_INT(user_data);
-        //stops the gestureFrame click signal from being broadcasted when pressing the sub button
-        g_signal_stop_emission_by_name(widget[i].gestureFrame,"pressed");
         for (int j = i; j!=widgetCount ; j++) {
             widget[j] = widget[j+1];
         }
