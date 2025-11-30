@@ -592,10 +592,21 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
 
     void exportGuiData() {
         //Writes the widget data in binary for other program to read
-        FILE *file1 = fopen("ExportedGui/build/widget.data","w");
-        fwrite(&widgetCount,sizeof(widgetCount),1,file1);
-        fwrite(&widget,sizeof(widget),widgetCount,file1);
-        fclose(file1);
+        if (strcmp(filepath,"")==0) {
+            FILE *file1 = fopen("ExportedGui/build/widget.data","w");
+            fwrite(&widgetCount,sizeof(widgetCount),1,file1);
+            fwrite(&widget,sizeof(widget),widgetCount,file1);
+            fclose(file1);
+        }else {
+            char temp[250];
+            snprintf(temp,sizeof(temp),"%s/widget.data",filepath);
+            FILE *file1 = fopen(temp,"w");
+            fwrite(&widgetCount,sizeof(widgetCount),1,file1);
+            fwrite(&widget,sizeof(widget),widgetCount,file1);
+            fclose(file1);
+        }
+
+
 
         //Writes the data in a documentation style for a hooman to read
         FILE *file2 = fopen("ExportedGui/build/WidgetDocumentation.txt","w");
