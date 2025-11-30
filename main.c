@@ -53,7 +53,7 @@ void widgetAttributeWidgets(GtkWidget *window, int i);
 void editWidget(GtkButton *button, gpointer user_data);
 void importGui();
 void readWidgetData(char *filepath);
-
+void navFolder();
 
 
 
@@ -618,41 +618,58 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
         fclose(file2);
     }
 
+//Globalised Variables
+GtkWidget *entryFilePath;
+void exportGui() {
 
-    void exportGui() {
+    //Init of windowExportGui
+    GtkWidget *windowExportGui = gtk_window_new();
+    gtk_window_set_default_size(GTK_WINDOW(windowExportGui),300,150);
+    gtk_window_set_title(GTK_WINDOW(windowExportGui),"Export To:");
+    gtk_window_present(GTK_WINDOW(windowExportGui));
 
-        //Init of windowExportGui
-        GtkWidget *windowExportGui = gtk_window_new();
-        gtk_window_set_default_size(GTK_WINDOW(windowExportGui),300,150);
-        gtk_window_set_title(GTK_WINDOW(windowExportGui),"Export To:");
-        gtk_window_present(GTK_WINDOW(windowExportGui));
-
-        //Init of gridExportGui
-        GtkWidget *gridExportGui = gtk_grid_new();
-        gtk_window_set_child(GTK_WINDOW(windowExportGui),gridExportGui);
-        gtk_widget_set_halign(gridExportGui,GTK_ALIGN_CENTER);
-        gtk_widget_set_valign(gridExportGui, GTK_ALIGN_CENTER);
-
-
-        //Init of entryFilePath
-        GtkWidget *entryFilePath = gtk_entry_new();
-        gtk_grid_attach(GTK_GRID(gridExportGui),entryFilePath,0,0,20,1);
-        gtk_widget_set_size_request(entryFilePath,230,-1);
-
-        //Init of buttonChoosePath
-        GtkWidget *buttonChoosePath = gtk_button_new_with_label("📂");
-        gtk_grid_attach(GTK_GRID(gridExportGui),buttonChoosePath,20,0,1,1);
-
-        //Init of buttonExport
-        GtkWidget *buttonExport = gtk_button_new_with_label("Export");
-        gtk_grid_attach(GTK_GRID(gridExportGui),buttonExport,0,1,21,1);
-        g_signal_connect(buttonExport,"clicked",G_CALLBACK(exportGuiData),NULL);
+    //Init of gridExportGui
+    GtkWidget *gridExportGui = gtk_grid_new();
+    gtk_window_set_child(GTK_WINDOW(windowExportGui),gridExportGui);
+    gtk_widget_set_halign(gridExportGui,GTK_ALIGN_CENTER);
+    gtk_widget_set_valign(gridExportGui, GTK_ALIGN_CENTER);
 
 
+    //Init of entryFilePath
+    entryFilePath = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(gridExportGui),entryFilePath,0,0,20,1);
+    gtk_widget_set_size_request(entryFilePath,230,-1);
 
+    //Init of buttonChoosePath
+    GtkWidget *buttonChoosePath = gtk_button_new_with_label("📂");
+    gtk_grid_attach(GTK_GRID(gridExportGui),buttonChoosePath,20,0,1,1);
+    g_signal_connect(buttonChoosePath,"clicked",G_CALLBACK(navFolder),NULL);
+
+    //Init of buttonExport
+    GtkWidget *buttonExport = gtk_button_new_with_label("Export");
+    gtk_grid_attach(GTK_GRID(gridExportGui),buttonExport,0,1,21,1);
+    g_signal_connect(buttonExport,"clicked",G_CALLBACK(exportGuiData),NULL);
+
+
+}
+void setFilePath(GObject *source, GAsyncResult *res, gpointer user_data) {
+        //Fetches the file path
+        GtkFileDialog *dialogNav = GTK_FILE_DIALOG(source);
+        GFile *folder = gtk_file_dialog_select_folder_finish(dialogNav, res, NULL);
+        char *path = g_file_get_path(folder);
+        //Set the entryDir to the desired file path
+        gtk_editable_set_text(GTK_EDITABLE(entryFilePath),path);
 
     }
+void navFolder() {
+        GtkWindow *windowNav = GTK_WINDOW(NULL);
+        GtkFileDialog *dialogNav = gtk_file_dialog_new();
 
+        GFile *home = g_file_new_for_path(g_get_home_dir());
+        gtk_file_dialog_set_initial_folder(dialogNav, home);
+        g_object_unref(home);
+        gtk_file_dialog_select_folder(dialogNav, windowNav, NULL,setFilePath,windowNav);
+    }
 
 
     //Declares the widget in the struct according to the information and configurations provided
