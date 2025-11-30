@@ -43,7 +43,7 @@ struct widgets{
 }widget[100];
 int widgetCount;
 void screenAddWidget();
-void registerWidget(int i);
+void registerWidget(GtkButton *button, gpointer user_data);
 void declareWidgetLabels();
 void deleteWidget(GtkButton *button, gpointer user_data);
 void screenWindowChild();
@@ -129,7 +129,7 @@ void screenAddWidget() {
     //Init of buttonAddWidget
     GtkWidget *buttonRegisterWidget = gtk_button_new_with_label("Add Widget");
     gtk_grid_attach(GTK_GRID(gridParentWidgets),buttonRegisterWidget,0,20,10,1);
-    g_signal_connect(buttonRegisterWidget,"clicked",G_CALLBACK(registerWidget),NULL);
+    g_signal_connect(buttonRegisterWidget,"clicked",G_CALLBACK(registerWidget),GINT_TO_POINTER(widgetCount));
     //Margins & Paddings
     gtk_widget_set_margin_top(buttonRegisterWidget,10);
 
@@ -362,7 +362,10 @@ void widgetAttributeWidgets(GtkWidget *window,int i) {
 
 
 //It registers/Inputs the values of the widgets and their properties in the widget struct
-void  registerWidget(int i) {
+void  registerWidget(GtkButton *button, gpointer user_data) {
+
+    int i = GPOINTER_TO_INT(user_data);
+
     //Function to hold all the logic for when the buttonRegister
     widget[widgetCount].isOccupied = 1;
     strcpy(widget[widgetCount].widgetName,gtk_editable_get_text(GTK_EDITABLE(entryWidgetName)));
