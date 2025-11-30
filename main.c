@@ -502,6 +502,7 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
                 //Init of boxWidgetInfo
                 widget[i].buttonWidgetLabel = gtk_button_new();
                 gtk_grid_attach(GTK_GRID(gridWidgets),widget[i].buttonWidgetLabel,0,i,1,1);
+                gtk_widget_set_size_request(widget[i].buttonWidgetLabel,400,50);
 
                 //init of gridChildBox
                 widget[i].gridChildBox=gtk_grid_new();
