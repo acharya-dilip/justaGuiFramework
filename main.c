@@ -93,22 +93,7 @@ void screenWindowChild() {
     }
 }
 
-//Glovbized Varuables
-GtkWidget *entryWidgetName;
-GtkWidget *dropdownWidgets;
-GtkWidget *spinbuttonGridPlacementRow;
-GtkWidget *spinbuttonGridPlacementColumn;
-GtkWidget *spinbuttonGridPlacementRowSpan;
-GtkWidget *spinbuttonGridPlacementColumnSpan;
-GtkWidget *spinbuttonMinHeight;
-GtkWidget *spinbuttonMinWidth;
-GtkWidget *spinbuttonMarginStart;
-GtkWidget *spinbuttonMarginEnd;
-GtkWidget *spinbuttonMarginTop;
-GtkWidget *spinbuttonMarginBottom;
-GtkWidget *entryLabel;
-const char *widgetList[]={"Button","Label","Entry","T.View",NULL};
-GtkStringList *listWidgets;
+//GLovalisized variables
 GtkWidget *windowAddWidget;
 void screenAddWidget() {
 
@@ -155,6 +140,22 @@ void editWidget(GtkButton *button, gpointer user_data) {
     gtk_widget_set_margin_top(buttonSaveEdit,10);
 }
 
+//Glovbized Varuables
+GtkWidget *entryWidgetName;
+GtkWidget *dropdownWidgets;
+GtkWidget *spinbuttonGridPlacementRow;
+GtkWidget *spinbuttonGridPlacementColumn;
+GtkWidget *spinbuttonGridPlacementRowSpan;
+GtkWidget *spinbuttonGridPlacementColumnSpan;
+GtkWidget *spinbuttonMinHeight;
+GtkWidget *spinbuttonMinWidth;
+GtkWidget *spinbuttonMarginStart;
+GtkWidget *spinbuttonMarginEnd;
+GtkWidget *spinbuttonMarginTop;
+GtkWidget *spinbuttonMarginBottom;
+GtkWidget *entryLabel;
+const char *widgetList[]={"Button","Label","Entry","T.View",NULL};
+GtkStringList *listWidgets;
 
 void widgetAttributeWidgets(GtkWidget *window,int i) {
     printf("updateScreenAddWidgets() is executing");
