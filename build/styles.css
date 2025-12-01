@@ -3,12 +3,16 @@ window{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
+}
+.windowChild{
+    background-image: unset;
 }
 .labelWidgets{
-    color: cyan;
+    color: lightgray;
     font-size: 40px;
     font-weight: bold;
 }
 frame{
-    background-color: white;
+    background-color: gray;
 }
