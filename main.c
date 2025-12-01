@@ -722,6 +722,7 @@ void navFolder() {
 
 
 
+
     int main(int argc, char **argv) {
         GtkApplication *app= gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
         g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
@@ -732,3 +733,5 @@ void navFolder() {
         g_object_unref (app);
         return status;
     }
+
+//Hours Spent:
