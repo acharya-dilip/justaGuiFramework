@@ -66,6 +66,7 @@ void screenWindowChild() {
     gtk_window_set_title(GTK_WINDOW(windowChild),"JustaGuiFramework");
     gtk_window_set_default_size(GTK_WINDOW(windowChild),200,200);
     gtk_window_present(GTK_WINDOW(windowChild));
+    gtk_widget_add_css_class(windowChild,"windowChild");
     //Init of gridParent
     GtkWidget *gridParent = gtk_grid_new();
     gtk_window_set_child(GTK_WINDOW(windowChild),gridParent);
