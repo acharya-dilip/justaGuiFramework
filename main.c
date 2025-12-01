@@ -432,9 +432,6 @@ void  registerWidget(GtkButton *button, gpointer user_data) {
     }
 
 
-
-
-
     //Globalization of variables
     GtkWidget *scrolledWindowWidgets;
     GtkWidget *gridWidgets;
@@ -584,9 +581,6 @@ void on_file_selected(GObject *source, GAsyncResult *res, gpointer user_data) {
             }
         }
     }
-
-
-
 
 
 
