@@ -4,3 +4,8 @@ window{
     background-repeat: no-repeat;
     background-position: center;
 }
+label{
+    color: cyan;
+    font-size: 40px;
+    font-weight: bold;
+}
