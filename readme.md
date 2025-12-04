@@ -32,7 +32,8 @@ reexport it to your chosen directory
 - Added a export file screen that pops up when you press the export button which lets you choose a path for you to export your widget.data file.
 
 # Demo Video
--
+- First Itiration: https://github.com/acharya-dilip/justaGuiFramework/blob/master/DemoVideo.mp4
+- Second Intiration: https://github.com/acharya-dilip/justaGuiFramework/blob/master/SecondItirationDemoVid.mp4
 
 # Arch Linux Build Instructions
 | Commands                                            | What They Do?                     |
